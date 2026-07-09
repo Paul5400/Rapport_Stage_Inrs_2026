@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Contexte de l'étude - Rapport de stage</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Work+Sans:wght@400;500;700&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+	<header class="container page-header">
+		<div class="page-title-card">
+			<span class="tag">Section 2</span>
+			<h1>Contexte de l'étude</h1>
+			<p class="subtitle">Environnement et enjeux de l'étude sur l'intégration sûre des applications robotiques collaboratives.</p>
+			<nav class="top-nav" aria-label="Navigation du rapport">
+				<a href="index.html">Accueil</a>
+				<a href="entreprise.html">Entreprise</a>
+				<a href="contexte.html">Contexte</a>
+				<a href="but.html">But de l'application</a>
+				<a href="objectifs.html">Objectifs</a>
+				<a href="application.html">Application robotique</a>
+				<a href="travaux.html">Travaux</a>
+				<a href="resultats.html">Résultats</a>
+				<a href="competences.html">Compétences</a>
+				<a href="biblio.html">Bibliographie</a>
+			</nav>
+		</div>
+	</header>
+
+	<main class="container page-grid">
+		<section class="card">
+			<h2>Sujet de stage</h2>
+			<p>Dans le cadre de ses travaux sur la prévention des risques liés à la robotique, le laboratoire
+				<strong>SETA</strong> de
+				l’INRS mène une étude intitulée <strong>ISARC (Intégration Sûre d’Application Robotique
+					Collaborative).</strong> Cette
+				étude vise à mieux accompagner les entreprises qui souhaitent intégrer des robots collaboratifs dans
+				leur environnement de travail. Contrairement aux robots industriels classiques encagés, ces robots
+				partagent un espace avec les opérateurs humains. Leur intégration doit donc se faire dans des conditions
+				strictes pour garantir la sécurité des travailleurs.
+			</p>
+			<p>L’approche classique des intégrateurs consiste généralement à considérer un robot et ses équipements sans
+				aucune protection. Suite à l’analyse des risques, des protections (comme des barrières ou capteurs) sont
+				ajoutées dans les situations identifiées comme dangereuses. L’étude <strong>ISARC</strong> propose une
+				démarche inverse :
+				partir d’un périmètre entièrement protégé autour de l’application robotique, par des protecteurs fixes
+				(ex: grillages). On crée ensuite des ouvertures spécifiques uniquement là où des tâches nécessitent
+				l’accès d’un opérateur humain dans l’espace de travail du robot (ex: collaboration avec le robot).
+				Chaque ouverture doit alors faire l’objet d’une analyse rigoureuse, pour s’assurer qu’elle ne génère pas
+				de risques non maîtrisés. Pour chaque ouverture générant des risques, au moins un moyen de prévention
+				doit y être associé.</p>
+			<p>Pour structurer cette démarche, les chercheurs de l’<strong>INRS</strong> ont conçu une méthode sous la
+				forme d’un arbre
+				de décision. Cet outil permet d’évaluer, étape par étape, les tâches réalisées dans la cellule, les
+				interactions homme-robot, et les mesures de prévention à appliquer. L’arbre s’appuie sur les normes de
+				sécurité en vigueur, notamment la norme <strong><a
+						href="https://www.boutique.afnor.org/fr-fr/norme/nf-en-iso-12100/securite-des-machines-principes-generaux-de-conception-appreciation-du-risq/fa161471/36742"
+						target="_blank">NF EN ISO 12100</a></strong> pour l’évaluation des risques machine, et
+				<strong><a
+						href="https://www.boutique.afnor.org/fr-fr/norme/nf-en-iso-102182/robots-et-dispositifs-robotiques-exigences-de-securite-pour-les-robots-indu/fa140283/1172"
+						target="_blank">NF EN ISO 10218-2</a></strong> pour
+				les exigences spécifiques aux applications robotiques collaboratives. Il permet
+				également de guider le choix entre différentes solutions techniques.
+			</p>
+			<br>
+			<h2>Qu'est-ce qu'un robot collaboratif ?</h2>
+			<p>Un robot collaboratif est un bras articulé énergisé, plus ou moins autonome, conçu pour travailler à
+				proximité des opérateurs ou en relation directe avec eux. Cette co-activité implique la suppression
+				totale ou partielle des barrières physiques entre l'homme et le robot afin qu'ils puissent intéragir.
+			</p>
+			<br>
+			<figure class="figure-placeholder">
+				<a href="#img-robot" id="anchor-robot">
+					<img src="img/robot.png" alt="Robot collaboratif" class="figure-image"
+						style="max-height: none; object-fit: contain;">
+				</a>
+				<figcaption>Figure 1 : Exemple d'une cellule de travail comportant un robot collaboratif.
+				</figcaption>
+			</figure>
+
+			<div class="lightbox-overlay" id="img-robot">
+				<a href="#anchor-robot" class="lightbox-close" aria-label="Fermer">&times;</a>
+				<img src="img/robot.png" alt="Robot collaboratif">
+			</div>
+			<br>
+			<h2>Les robots collaboratifs sont-ils sûrs ?</h2>
+			<p>La mise en oeuvre de robots, quels qu'ils soient , génère un nombre important de risques liés au robot
+				lui-même mais aussi au porcédé , à l'outil utilisé et à la pièce manipulée. Parmi ces risques , on
+				distingue les chocs et les écrasements ainsi que les risques électriques , thermiques et liés à
+				l'exposition aux vibrations et aux poussières. Or, si en robotique classique la majorité de ces risques
+				est maîtrisée par des barrières de protection matérialisées , ce n'est pas le cas des robots
+				collaboratifs conçus pour travailler à proximité des opérateurs.</p>
+			<br>
+			<h2>Les robots collaboratifs travaillent-ils avec l'opérateur ?</h2>
+			<p>
+
+				L'homme et le robot collaboratif travaillent en lien l'un avec l'autre, à des degrés d'interaction
+				différents. On distingue trois types de collaboration possibles :
+			<ul class="work-environment-list">
+				<li>Le partage d'espace de travail ,
+					lorsque l'homme et le robot concourent à la réalisation de tâches distinctes dans un même
+					environnement physique</li>
+				<li>La collaboration directe, lorsque l'homme et le robot travaillent simultanément à la réalisation
+					d'une tâche commune</li>
+				<li>La collaboration indirecte, lorsque l'homme et le robot travaillent tour à tour à la réalisation
+					d'une tâche commune</li>
+			</ul>
+			</p>
+
+		</section>
+	</main>
+
+	<footer class="container site-footer">
+		<div class="page-navigation">
+			<a href="entreprise.html" class="nav-btn btn-prev">
+				<span class="arrow">←</span>
+				<span class="nav-text"><strong>Précédent :</strong> <small>Entreprise</small></span>
+			</a>
+			<a href="but.html" class="nav-btn btn-next">
+				<span class="nav-text"><strong>Suivant :</strong> <small>But</small></span>
+				<span class="arrow">→</span>
+			</a>
+		</div>
+
+		<hr class="footer-divider">
+		<p class="footer-credits">Paul Andrieu - Rapport de stage INRS - 2026</p>
+	</footer>
+</body>
+
+</html>

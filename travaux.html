@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Travaux réalisés - Rapport de stage</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Work+Sans:wght@400;500;700&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+	<header class="container page-header">
+		<div class="page-title-card">
+			<span class="tag">Section 6</span>
+			<h1>Travaux réalisés</h1>
+			<p class="subtitle">Méthode de travail et évolutions de l'application.</p>
+			<nav class="top-nav" aria-label="Navigation du rapport">
+				<a href="index.html">Accueil</a>
+				<a href="entreprise.html">Entreprise</a>
+				<a href="contexte.html">Contexte</a>
+				<a href="but.html">But de l'application</a>
+				<a href="objectifs.html">Objectifs</a>
+				<a href="application.html">Application robotique</a>
+				<a href="travaux.html">Travaux</a>
+				<a href="resultats.html">Résultats</a>
+				<a href="competences.html">Compétences</a>
+				<a href="biblio.html">Bibliographie</a>
+			</nav>
+		</div>
+	</header>
+
+	<main class="container page-grid">
+		<section class="card">
+			<h2>Méthode de travail</h2>
+			<div class="work-environment-body">
+				<p>
+					J’ai travaillé en autonomie sur le développement de cet outil, en suivant un mode de
+					fonctionnement proche de celui d’un prestataire informatique. Mes deux tuteurs, n’étant pas
+					informaticiens, ils jouaient plutôt le rôle de "clients" : ils m’ont remis un cahier des charges
+					en début de stage, dans lequel les fonctionnalités principales et la logique de l’outil étaient
+					déjà définies.
+				</p>
+				<p>
+					Nous faisions un point hebdomadaire pour valider les avancées, discuter des choix ergonomiques
+					ou techniques, et ajuster certaines priorités. Ce fonctionnement itératif m’a permis de prendre
+					des initiatives sur le plan technique tout en m’appuyant sur leur expertise en sécurité des
+					machines et en prévention des risques liés à l’usage de robots en milieu industriel.
+				</p>
+				<p>
+					Comme les fonctionnalités principales de l'application, comme les outils de dessin, étaient déjà
+					mises en place, mon but était donc de faire évoluer cette application pour la rendre plus complète
+					et plus ergonomique en faisant en sorte qu'elle soit presque prête au déploiement.
+				</p>
+				<p>
+					De plus, l'application ayant été développée au préalable par un stagiaire devenu aujourd'hui
+					alternant a grandement facilité mon travail ainsi que la compréhension du code et des enjeux liés
+					à la robotique, et plus particulièrement à la robotique collaborative.
+				</p>
+			</div>
+			<br>
+			<span class="tag">Modifications ergonomiques (UX, UI)</span>
+
+			<div class="section-heading">
+				<h2>Gestion des raccourcis clavier et de l'historique (Undo/Redo)</h2>
+			</div>
+
+			<div class="work-environment-body">
+				<p>
+					Afin d'améliorer l'ergonomie globale et d'offrir une expérience utilisateur proche d'un outil de
+					dessin classique, j'ai implémenté un système complet de gestion des raccourcis clavier.
+				</p>
+				<p>
+					<a href="resultats.html#ctrl-video">
+						<span class="tag"> Voir l'exemple vidéo</span>
+					</a>
+				</p>
+			</div>
+			<div class="architecture-grid">
+				<div class="architecture-text">
+					<h3>1. Centralisation des événements clavier</h3>
+					<br>
+					<p>
+						À l'aide d'un Hook React nommé <code>useKeyboardShortcuts</code>, l'application
+						écoute en continu les entrées de l'utilisateur. Ce module permet notamment de :
+					</p>
+					<ul class="work-environment-list">
+						<li><strong>Annuler l'action en cours (Échap) :</strong> Réinitialise l'outil actif pour
+							repasser instantanément sur le curseur standard de sélection.</li>
+						<li><strong>Retour à l'état précédent (Ctrl + Z) :</strong> Restaure la configuration
+							précédente de la cellule robotique en interceptant les états du store de données
+							(Zustand).</li>
+						<li><strong>Rétablir l'action annulée (Ctrl + Y ou Ctrl + Shift + Z) :</strong> Avance à
+							nouveau dans l'historique des modifications.</li>
+					</ul>
+
+					<figure class="code-screenshot">
+						<a href="#img-ctrl-code" id="anchor-ctrl-code">
+							<img src="img/ctrl_code.png" alt="Extrait de code du hook useKeyboardShortcuts"
+								class="embedded-img" />
+						</a>
+						<figcaption>Figure 5 : Implémentation du gestionnaire d'événements clavier
+						</figcaption>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-ctrl-code">
+						<a href="#anchor-ctrl-code" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/ctrl_code.png" alt="Extrait de code du hook useKeyboardShortcuts">
+					</div>
+				</div>
+				<div class="architecture-diagram">
+					<h3>2. Architecture logicielle : Le Pattern Command</h3>
+					<br>
+					<p>
+						Ici, on utilise le <strong>Pattern Command</strong> qui couplé au gestionnaire d'historique
+						<code>HistoryStore</code> facilite grandement la gestion des
+						actions réversibles.
+					</p>
+					<br>
+					<p>
+						Chaque interaction sur le canvas (translation,rotation) génère
+						un objet encapsulant une méthode <code>execute()</code> et une méthode <code>undo()</code>,
+						pour garantir la réversibilité des actions.
+					</p>
+					<br>
+					<figure class="architecture-figure">
+						<a href="#img-diag-ctrl" id="anchor-diag-ctrl">
+							<img src="img/diag_ctrl.png"
+								alt="Diagramme de classe de la gestion du store et des commandes"
+								class="embedded-img diagram-shadow" />
+						</a>
+						<figcaption>Figure 6 : Diagramme de classe du Pattern Command utilisé</figcaption>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-diag-ctrl">
+						<a href="#anchor-diag-ctrl" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/diag_ctrl.png" alt="Diagramme de classe de la gestion du store et des commandes">
+					</div>
+				</div>
+			</div>
+			<br>
+
+			<div class="work-environment-body">
+				<h2>Persistance des données et sauvegarde navigateur (sessionStorage)</h2>
+				<p>
+					Afin d'éviter toute perte de travail suite à une fermeture accidentelle du navigateur ou à un
+					rafraîchissement de la page, j'ai mis en place un mécanisme de sauvegarde automatique locale basé
+					sur l'API <code>sessionStorage</code>.
+				</p>
+			</div>
+
+			<div class="architecture-grid">
+				<div class="architecture-text">
+					<h3>1. Cycle de vie et désérialisation</h3>
+					<br>
+					<p>
+						On utilise à nouveau un hook<code>use-project-backup.ts</code>, qui orchestre la persistance de
+						l'état global de la cellule de travail.
+					</p>
+					<br>
+					<ul class="work-environment-list">
+						<li><strong>Modélisation (<code>ProjectBackupData</code>) :</strong> Centralisation du
+							nom du projet, de l'état d'initialisation, de la phase active, ainsi que de l'ensemble des
+							objets géométriques et des tâches assignées.</li>
+						<li><strong>Lecture et désérialisation :</strong> Récupération de la chaîne brute JSON stockée
+							sous la clé <code>isaarc_project_backup</code> pour la reconstruire dynamiquement en mémoire
+							lors de l'initialisation.</li>
+						<li><strong>Normalisation (<code>normalizeVisualObjects</code>) :</strong>
+							Restructuration de la collection d'objets (image de fond ,robots, espaces restreints,
+							ouvertures,
+							espace protégé) pour garantir le rendu Konva.</li>
+					</ul>
+
+					<figure class="code-screenshot">
+						<a href="#img-backup-code" id="anchor-backup-code">
+							<img src="img/sessionstorage.png" alt="Extrait de code de use-project-backup.ts"
+								class="embedded-img" />
+						</a>
+						<figcaption>Figure 7 : Hook <code>use-project-backup.ts</code> pour la persistance des données
+							dans le sessionStorage
+						</figcaption>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-backup-code">
+						<a href="#anchor-backup-code" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/sessionstorage.png" alt="Extrait de code de use-project-backup.ts">
+					</div>
+				</div>
+
+				<div class="architecture-diagram">
+					<h3>2. Flux d'état : Sauvegarde automatique</h3>
+					<br>
+					<p>
+						Pour ne pas dégrader les performances de l'interface (notamment lors des manipulations
+						sur le canvas), le cycle utilise des indicateurs d'exclusion (comme
+						<code>skipNextBackupSave</code>).
+
+					</p>
+					<br>
+					<p>
+						Lorsqu'une action est validée, l'état complet est sérialisé et poussé de
+						manière asynchrone dans le stockage de session, ajoutant de la sécurité.
+					</p>
+					<br>
+					<figure class="architecture-figure">
+						<a href="#img-diag-backup" id="anchor-diag-backup">
+							<img src="img/diag_backup.png" alt="Schéma du flux de persistance des données"
+								class="embedded-img" />
+						</a>
+						<figcaption>Figure 8 : Diagramme de séquence illustrant les échanges entre le store global, le
+							hook de persistance et le sessionStorage
+						</figcaption>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-diag-backup">
+						<a href="#anchor-diag-backup" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/diag_backup.png" alt="Schéma du flux de persistance des données">
+					</div>
+				</div>
+			</div>
+
+			<div class="work-environment-body">
+				<br>
+				<h2>Menu de navigation et chronologie de la phase de conception</h2>
+				<p>
+					Afin de guider l'utilisateur pas à pas à travers les différentes étapes de la conception de la
+					cellule robotique, j'ai
+					développé un composant de navigation chronologique interactif.
+				</p>
+			</div>
+
+			<div class="architecture-grid">
+				<div class="architecture-text">
+					<h3>1. Aide à la conception et navigation</h3>
+					<br>
+					<p>
+						Le composant <code>ConceptionTimeline</code> génère dynamiquement une suite d'étapes ordonnées
+						qui structurent la création de la cellule robotique :
+					</p>
+					<br>
+					<ul class="work-environment-list">
+						<li><strong>Suivi de l'état d'avancement :</strong> Chaque étape se voit attribuer un statut
+							(courant, complété, ou verrouillé).
+						</li>
+						<li><strong>Navigation :</strong> L'utilisateur peut librement
+							cliquer sur les étapes déjà validées (statut <code>completed</code>) pour revenir en arrière
+							et ajuster ses choix via la fonction <code>navigateToStep</code>.</li>
+						<li><strong>Contrôle et validation :</strong> Les étapes futures restent désactivées
+							(<code>disabled</code>) tant que les prérequis des phases précédentes ne sont pas
+							entièrement remplis. Si les objets visuels de l'étape ne sont pas conforme on renvoie alors
+							une erreur.</li>
+					</ul>
+
+					<figure class="code-screenshot" style="margin-top: 20px;">
+						<a href="#img-chrono-code" id="anchor-chrono-code">
+							<img src="img/chrono_code.png" alt="Code source de ConceptionTimeline" class="embedded-img"
+								style="max-width: 85%; height: auto; border-radius: 8px;" />
+						</a>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-chrono-code">
+						<a href="#anchor-chrono-code" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/chrono_code.png" alt="Code source de ConceptionTimeline"
+							style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
+					</div>
+					<figcaption>Figure 9 : Extrait de code du composant <code>ConceptionTimeline</code> illustrant la
+						logique de navigation et de gestion des étapes</figcaption>
+				</div>
+
+				<div class="architecture-diagram">
+					<h3>2. Intégration visuelle</h3>
+					<br>
+					<p>
+						Visuellement, le menu s'intègre sous cette forme de frise chronologique.
+					</p>
+					<br>
+					<figure class="architecture-figure">
+						<a href="#img-chronologie" id="anchor-chronologie">
+							<img src="img/chrono_ex.png" alt="Exemple visuel du menu chronologique de conception"
+								class="embedded-img"
+								style="max-width: 240px; display: block; margin: 0 auto; box-shadow: 0 4px 12px rgba(0,0,0,0.1);" />
+						</a>
+						<br>
+						<figcaption>Figure 10 : Rendu de la chronologie interactive</figcaption>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-chronologie">
+						<a href="#anchor-chronologie" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/chrono_ex.png" alt="Exemple visuel du menu chronologique de conception"
+							style="max-width: 100%; max-height: 80vh; border-radius: 8px;">
+					</div>
+				</div>
+			</div>
+			<div class="work-environment-body">
+				<br>
+				<h2>Visualisation dynamique des ouvertures (Composant SVG)</h2>
+				<p>
+					Afin d'avoir un rendu visuel instantané lors de la saisie des dimensions d'une ouverture (passage
+					dans la grille), j'ai développé un composant vectoriel basé sur l'élément SVG (Scalable
+					Vector Graphics). <br>Ce module permet d'illustrer la largeur, la hauteur ainsi que la distance de
+					l'ouverture par rapport au sol.
+				</p>
+			</div>
+			<br>
+			<a href="resultats.html#svg-video">
+				<span class="tag"> Voir l'exemple vidéo</span>
+			</a>
+
+			<div class="architecture-grid">
+				<div class="architecture-text">
+					<h3>1. Initialisation et calcul de l'échelle dynamique</h3>
+					<br>
+					<p>
+						Le composant <code>OpeningDimensions</code> reçoit les propriétés de l'ouverture en centimètres
+						et réalise la mise à l'échelle pour s'adapter à la zone d'affichage du vecteur en fonction des
+						dimensions saisies :
+					</p>
+					<br>
+					<ul class="work-environment-list">
+						<li><strong>Conversion d'unités :</strong> Les valeurs saisies par l'utilisateur sont
+							multipliées pour une transposition rigoureuse du plan de dessin en millimètres
+							(<code>widthMm</code>, <code>heightMm</code>).</li>
+						<li><strong>Calcul d'échelle :</strong> En fonction des dimensions maximales disponibles de la
+							<code>viewBox</code> et de la hauteur totale (incluant la distance au sol
+							<code>currentGround</code>), le hook calcule un ratio dynamique (<code>dynamicScale</code>)
+							afin d'éviter tout débordement.
+						</li>
+					</ul>
+
+					<figure class="code-screenshot" style="margin-top: 20px;">
+						<a href="#img-svg-code1" id="anchor-svg-code1">
+							<img src="img/svg_code1.png" alt="Code source OpeningDimensions - Initialisation et calculs"
+								class="embedded-img" style="max-width: 90%; height: auto; border-radius: 8px;" />
+						</a>
+						<figcaption>Figure 11 : Logique de conversion et mise à l'échelle du conteneur SVG
+						</figcaption>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-svg-code1">
+						<a href="#anchor-svg-code1" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/svg_code1.png" alt="Code source OpeningDimensions - Initialisation et calculs"
+							style="max-width: 90%; max-height: 80vh; border-radius: 8px;">
+					</div>
+				</div>
+
+				<div class="architecture-diagram">
+					<h3>2. Rendu vectoriel et gestion du focus</h3>
+					<br>
+					<p>
+						La structure du rendu s'appuie sur des balises graphiques natives pour matérialiser les lignes
+						de cotes et s'adapter au champ sélectionné par l'intégrateur :
+					</p>
+					<br>
+					<ul class="work-environment-list">
+						<li><strong>Lignes de cotes et flèches de mesure :</strong> Utilisation d'éléments
+							<code>&lt;line&gt;</code> et <code>&lt;polygon&gt;</code> calculés dynamiquement pour tracer
+							précisément les vecteurs de largeur et de hauteur.
+						</li>
+						<li><strong>Focus interactif :</strong> Le composant réagit aux changements de focus de
+							l'utilisateur, en ajustant les opacités et les couleurs pour mettre en évidence la dimension
+							modifiée.</li>
+					</ul>
+
+					<figure class="code-screenshot" style="margin-top: 20px;">
+						<a href="#img-svg-code2" id="anchor-svg-code2">
+							<img src="img/svg_code2.png" alt="Code source OpeningDimensions - Tracé et gestion du focus"
+								class="embedded-img" style="max-width: 90%; height: auto; border-radius: 8px;" />
+						</a>
+						<figcaption>Figure 12 : Implémentation des balises de tracé et gestion dynamique des
+							opacités</figcaption>
+					</figure>
+
+					<div class="lightbox-overlay" id="img-svg-code2">
+						<a href="#anchor-svg-code2" class="lightbox-close" aria-label="Fermer">&times;</a>
+						<img src="img/svg_code2.png" alt="Code source OpeningDimensions - Tracé et gestion du focus"
+							style="max-width: 90%; max-height: 80vh; border-radius: 8px;">
+					</div>
+				</div>
+			</div>
+
+
+			<br><br>
+			<span class="tag">Modifications fonctionnelles</span>
+			<br><br>
+			<div class="work-environment-body">
+				<h2>Validation et Tests de Régression du Graphe de Décision</h2>
+				<p>
+					Pour garantir la fiabilité de l'application face aux évolutions futures du code, une stratégie
+					de <strong>tests de régression</strong> a été mise en place.
+					L'objectif principal est de s'assurer que les modifications apportées à l'arbre décisionnel
+					n'introduisent pas d'erreurs dans le calcul des solutions de prévention ou dans le parcours
+					séquentiel.
+					Cette validation s'appuie sur le test de notre <strong>graphe orienté</strong>, où
+					chaque nœud représente une question et chaque arête représente une transition conditionnelle.
+				</p>
+			</div>
+
+			<div class="work-environment-body" style="margin-top: 30px;">
+				<h3>1. Modélisation logique et arbres de décision </h3>
+				<p>
+					Voici un extrait des diagrammes représentant les flux de questions et de décisions de l'application
+					:
+				</p>
+				<ul class="work-environment-list">
+					<li>
+						<strong>Le flux principal :</strong> Ce logigramme comprend l'étape
+						globale de <em>Réduction des risques</em>. Il analyse séquentiellement les types de risques
+						(choc, écrasement, éjection...) oriente vers la solution
+						matérielle appropriée (détecteurs de franchissements, protecteurs mobiles, etc.) en fonction des réponses de l'utilisateur.
+					</li>
+					<li>
+						<strong>La partie PFL :</strong> En cas d'activation de la
+						branche liée à la limitation de puissance et de force (PFL), le flux bascule vers la fenêtre
+						correspondante. Ce graphe renvoie vers un calcul des vitesses théoriques admissibles.
+					</li>
+				</ul>
+
+				<div
+					style="display: flex; gap: 20px; margin: 25px 0; justify-content: center; align-items: flex-start; flex-wrap: nowrap;">
+
+					<div style="display: flex; flex-direction: column; gap: 20px; flex: 1;">
+						<figure class="architecture-figure" style="margin: 0; text-align: center;">
+							<a href="#img-v35-1" id="anchor-v35-1">
+								<img src="img/v35_1.png" alt="Flux principal logi_v35 - Partie 1"
+									class="embedded-img tab"
+									style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
+							</a>
+							<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">Flux principal - Partie
+								1</figcaption>
+						</figure>
+
+						<figure class="architecture-figure" style="margin: 0; text-align: center;">
+							<a href="#img-v35-2" id="anchor-v35-2">
+								<img src="img/v35_2.png" alt="Flux principal logi_v35 - Partie 2"
+									class="embedded-img tab"
+									style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
+							</a>
+							<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">Flux principal - Partie
+								2</figcaption>
+						</figure>
+					</div>
+
+					<figure class="architecture-figure" style="margin: 0; text-align: center; flex: 1;">
+						<a href="#img-logipfl" id="anchor-logipfl">
+							<img src="img/logi_pfl.png" alt="Sous-logique logi_pfl" class="embedded-img"
+								style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">Fenêtre PFL</figcaption>
+					</figure>
+
+				</div>
+
+				<p style="font-style: italic; font-size: 0.9em; color: #555; text-align: center; margin-bottom: 30px;">
+					Figure 12 : Logigrammes correspondant aux flux de décisions de l'application
+				</p>
+
+				<div class="lightbox-overlay" id="img-v35-1">
+					<a href="#anchor-v35-1" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/v35_1.png" alt="Flux principal logi_v35 - Partie 1" tabindex="0">
+				</div>
+
+				<div class="lightbox-overlay" id="img-v35-2">
+					<a href="#anchor-v35-2" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/v35_2.png" alt="Flux principal logi_v35 - Partie 2" tabindex="0">
+				</div>
+
+				<div class="lightbox-overlay" id="img-logipfl">
+					<a href="#anchor-logipfl" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/logi_pfl.png" alt="Sous-logique logi_pfl" tabindex="0">
+				</div>
+			</div>
+
+			<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+
+			<div class="work-environment-body">
+				<h3>2. Implémentation du graphe</h3>
+				<p>
+					Pour transposer ces logigrammes en code, la logique n'a pas été écrite
+					sous forme de conditions imbriquées. À la place, un système de <strong>graphe orienté
+					</strong> a été développé.
+				</p>
+				<ul class="work-environment-list">
+					<li>
+						<strong>Nœuds décisionnels :</strong> Chaque transition d'une étape à une autre est gérée
+						par un flux programmé, isolant chaque règle
+						de décision.
+					</li>
+					<li>
+						<strong>Configuration dynamique :</strong> Comme l'illustre le
+						code source, les branches spécifiques (ex: éjection couverte ou non via
+						<code>ejectionRiskPrevention.next</code>) sont déclarées pour assurer le bon
+						parcours.
+					</li>
+				</ul>
+
+				<div
+					style="display: flex; gap: 20px; margin: 25px 0; justify-content: center; align-items: flex-start;">
+					<figure class="architecture-figure" style="margin: 0; text-align: center; flex: 1;">
+						<a href="#img-testlogicode" id="anchor-testlogicode">
+							<img src="img/test_logi_code.png" alt="Configuration du code source" class="embedded-img"
+								style="width: 100%; max-width: 380px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">Fichier de tests sur le
+							graphe</figcaption>
+					</figure>
+					<figure class="architecture-figure" style="margin: 0; text-align: center; flex: 1;">
+						<a href="#img-graphv35" id="anchor-graphv35">
+							<img src="img/graph_v35.png" alt="Rendu visuel du graphe" class="embedded-img"
+								style="width: 100%; max-width: 380px; height: auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.15);" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">Fichier du graphe
+							correspondant aux logigrammes</figcaption>
+					</figure>
+				</div>
+				<p style="font-style: italic; font-size: 0.9em; color: #555; text-align: center; margin-bottom: 30px;">
+					Figure 13 : Extraits de code sur le graphe et le fichier de test associé
+				</p>
+
+				<div class="lightbox-overlay" id="img-testlogicode">
+					<a href="#anchor-testlogicode" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/test_logi_code.png" alt="Configuration du code source"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
+				</div>
+				<div class="lightbox-overlay" id="img-graphv35">
+					<a href="#anchor-graphv35" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/graph_v35.png" alt="Rendu visuel du graphe"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
+				</div>
+			</div>
+
+			<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
+
+			<div class="work-environment-body">
+				<h3>3. Matrice de décision et automatisation des tests</h3>
+				<p>
+					Afin de valider automatiquement les chemins possibles au sein du graphe sans
+					test manuel, une <strong>matrice de décision</strong> via un tableau CSV a été mise en place.
+
+				</p>
+				<ul class="work-environment-list">
+					<li>
+						<strong>Tests des noeuds critiques :</strong> Ce tableau (CSV) contient des dizaines
+						de scénarios (<code>Cas_PFL</code>, <code>Cas_S1E</code>, etc...) combinant toutes les
+						variables possibles (risques d'éjection, interruption du procédé...) pointant vers la
+						solution finale attendue.
+					</li>
+					<li>
+						<strong>Exécution des tests de régression :</strong> Un script automatique parse la
+						table (<code>parseCsvToDict</code>), injecte les données dans le graphe
+						et compare le résultat obtenu avec la matrice. Si les valeurs ne correspondent pas une erreur
+						est levée et le test échoue.
+					</li>
+					<li><strong>Au total 216 tests sont menés.</strong></li>
+				</ul>
+
+				<div class="figure-container" style="text-align: center; margin: 25px 0;">
+					<a href="#img-tablogi" id="anchor-tablogi">
+						<img src="img/tab_logi.png" alt="Matrice de décision et cas de tests"
+							style="width: 100%; max-width: 850px; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+					</a>
+					<p style="font-style: italic; font-size: 0.9em; color: #555; margin-top: 10px;">
+						Figure 14 : Fichier CSV de la matrice de décision
+					</p>
+				</div>
+
+				<div class="lightbox-overlay" id="img-tablogi">
+					<a href="#anchor-tablogi" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/tab_logi.png" alt="Matrice de décision et cas de tests"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
+				</div>
+			</div>
+		</section>
+	</main>
+
+	<footer class="container site-footer">
+		<div class="page-navigation">
+			<a href="application.html" class="nav-btn btn-prev">
+				<span class="arrow">←</span>
+				<span class="nav-text"><strong>Précédent :</strong> <small>Application robotique</small></span>
+			</a>
+			<a href="resultats.html" class="nav-btn btn-next">
+				<span class="nav-text"><strong>Suivant :</strong> <small>Résultats</small></span>
+				<span class="arrow">→</span>
+			</a>
+		</div>
+
+		<hr class="footer-divider">
+		<p class="footer-credits">Paul Andrieu - Rapport de stage INRS - 2026</p>
+	</footer>
+</body>
+
+</html>

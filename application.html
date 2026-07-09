@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Description de l'application - Rapport de stage</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Work+Sans:wght@400;500;700&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet" href="styles.css" />
+</head>
+
+<body>
+	<header class="container page-header">
+		<div class="page-title-card">
+			<span class="tag">Section 5</span>
+			<h1>Description de l'application ISARC</h1>
+			<nav class="top-nav" aria-label="Navigation du rapport">
+				<a href="index.html">Accueil</a>
+				<a href="entreprise.html">Entreprise</a>
+				<a href="contexte.html">Contexte</a>
+				<a href="but.html">But de l'application</a>
+				<a href="objectifs.html">Objectifs</a>
+				<a href="application.html">Application robotique</a>
+				<a href="travaux.html">Travaux</a>
+				<a href="resultats.html">Résultats</a>
+				<a href="competences.html">Compétences</a>
+				<a href="biblio.html">Bibliographie</a>
+
+			</nav>
+		</div>
+	</header>
+
+	<main class="container page-grid">
+		<section class="card">
+			<h2>Présentation de l'application robotique collaborative</h2>
+			<p>L'application robotique collaborative développée est une solution web permettant de concevoir et de
+				simuler l'architecture d'une cellule de travail en 2D. Elle offre aux intégrateurs la possibilité de
+				concevoir leurs
+				zones de travail via un canvas interactif possédant un arrière plan (optionnel) , le robot , des tables , la zone restreinte du robot et l'espace protégé.</p>
+			<p>À la fin de la conception de ce schéma, <strong>ISARC</strong> se poursuit vers une phase
+				d'identification des risques avec la création des ouvertures sur les limites de l'espace protégé
+				(grilles). Une fois les tâches affectées à ces ouvertures, l'intégrateur est guidé à travers un arbre
+				de décision interactif pour évaluer les risques et déterminer les mesures de prévention adéquates.</p>
+
+			<div class="info-block">
+				<p>L'application se concentre spécifiquement sur les <strong>risques mécaniques</strong> :</p>
+				<div class="tags-grid danger-tags">
+					<span>Chocs ou écrasements</span>
+					<span>Éjection</span>
+					<span>Renversement</span>
+					<span>Coupure / sectionnement</span>
+					<span>Entraînement / emprisonnement</span>
+					<span>Frottement ou abrasion</span>
+					<span>Injection</span>
+					<span>Cisaillement</span>
+					<span>Glissade, trébuchement & chute</span>
+					<span>Perforation ou piqûre</span>
+					<span>Suffocation</span>
+					<span>Happement / enroulement</span>
+				</div>
+			</div>
+
+			<div class="info-block">
+				<p>En fonction de la tâche et de la configuration, <strong>ISARC</strong> propose les <strong>moyens de
+						prévention</strong> suivants :</p>
+				<div class="tags-grid prevention-tags">
+					<span>Protecteurs mobiles (interverrouillage et verrouillage)</span>
+					<span>Détection de franchissement (Barrières immatérielles, caméras de sécurité, scrutateurs
+						lasers)</span>
+					<span>PFL : Limitation de puissance et de force</span>
+					<span>Surveillance dynamique de zone</span>
+					<span>SSM : Vitesse et distance de séparation contrôlées</span>
+				</div>
+			</div>
+
+			<p class="note-text"><em>Note :</em> Les risques autres que mécaniques (chimiques, biologiques...) sont pris
+				en compte dans les risques mais requièrent des mesures spécifiques à renseigner par l'intégrateur, ils
+				sont hors du graphe
+				décisionnel.</p>
+			<br>
+			<h2>Aperçu de l'application </h2>
+
+			<div class="figures-grid" style="grid-template-columns: 1fr; gap: 2.5rem;">
+				<figure class="figure-placeholder">
+					<a href="#img-ex-conception" id="anchor-ex-conception">
+						<img src="img/ex_conception.png"
+							alt="Exemple de conception d'une cellule robotique collaborative" class="figure-image"
+							style="max-height: none; object-fit: contain;">
+					</a>
+					<figcaption>Figure 2 : Exemple d'interface de conception d'une cellule robotique collaborative en
+						2D.</figcaption>
+				</figure>
+				<div class="lightbox-overlay" id="img-ex-conception">
+					<a href="#anchor-ex-conception" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/ex_conception.png" alt="Exemple de conception d'une cellule robotique collaborative">
+				</div>
+
+				<figure class="figure-placeholder">
+					<a href="#img-ex-reduc" id="anchor-ex-reduc">
+						<img src="img/ex_reduc.png"
+							alt="Exemple de réduction des risques d'une cellule robotique collaborative"
+							class="figure-image" style="max-height: none; object-fit: contain;">
+					</a>
+					<figcaption>Figure 3 : Exemple de résultat final avec moyen de prévention trouvé.
+					</figcaption>
+				</figure>
+				<div class="lightbox-overlay" id="img-ex-reduc">
+					<a href="#anchor-ex-reduc" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/ex_reduc.png"
+						alt="Exemple de réduction des risques d'une cellule robotique collaborative">
+				</div>
+			</div>
+			<br>
+			<h3>Stack technique</h3>
+			<br>
+			<table class="stack-table">
+				<thead>
+					<tr>
+						<th>Frameworks / Langages</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="tech-cell">
+							<img src="img/logo_react.png" alt="Logo React" class="table-logo">
+						</td>
+						<td>
+							<h5 class="tech-title">React</h5>
+							<p>Bibliothèque JavaScript pour construire des interfaces utilisateur. Elle permet de créer
+								des
+								composants réutilisables et de gérer efficacement l'état de l'application. C'est le
+								fondement de notre application qui possède de nombreux composants interactifs et
+								dynamiques.</p>
+						</td>
+						</p>
+					</tr>
+					<tr>
+						<td class="tech-cell">
+							<img src="img/logo_next.svg" alt="Logo Next.js" class="table-logo">
+						</td>
+						<td>
+							<h5 class="tech-title">Next.js</h5>
+							<p>Framework basé sur React qui permet de créer des applications web performantes avec une
+								gestion efficace de l'état et des routes.</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-cell">
+							<img src="img/logo_ts.webp" alt="Logo TypeScript" class="table-logo">
+						</td>
+						<td>
+							<h5 class="tech-title">TypeScript</h5>
+							<p>Offre un typage statique qui aide à prévenir les erreurs courantes avant l'exécution
+								et rend le code de calcul géométrique beaucoup plus fiable,
+								robuste et maintenable.</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br>
+			<br>
+			<table class="stack-table">
+				<thead>
+					<tr>
+						<th>Librairies</th>
+						<th>Description</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<td class="tech-cell">
+							<img src="img/logo_reactkonva.png" alt="Logo React Konva" class="table-logo">
+						</td>
+						<td>
+							<h5 class="tech-title">React Konva</h5>
+							<p>Librairie basée sur le Canvas HTML5. Elle permet de créer et de manipuler graphiquement
+								des formes
+								complexes, elle est cruciale pour le rendu visuel des éléments graphiques.</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-cell">
+							<img src="img/logo_reactpdf.png" alt="Logo React PDF" class="table-logo">
+						</td>
+						<td>
+							<h5 class="tech-title">@react-pdf/renderer</h5>
+							<p>Remplaçant l'ancienne solution jsPDF, cette librairie permet de générer des rapports PDF
+								complets directement côté client en décrivant l'interface sous forme de composants
+								React.
+								Cela a permis de concevoir un système de mise en page dynamique, capable de gérer
+								par exemple
+								les sauts de page automatiques.</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-cell">
+							<img src="img/logo_zustand.jpg" alt="Logo Zustand" class="table-logo">
+						</td>
+						<td>
+							<h5 class="tech-title">Zustand</h5>
+							<p>Gère l'état global et les "stores" de l'application. C'est notamment grâce à Zustand
+								qu'est
+								implémenté le système d'historique (<code>history.stores.ts</code>) ou encore la gestion
+								des contrôles clavier (<code>clipboard.stores.ts</code>).</p>
+						</td>
+					</tr>
+					<tr>
+						<td class="tech-cell">
+							<img src="img/logo_md.png" alt="Logo Markdown" class="table-logo">
+						</td>
+						<td>
+							<h5 class="tech-title">react-markdown</h5>
+							<p>Interprète et convertit les textes au format Markdown en vrais composants React. Dans
+								notre
+								cas, elle permet d'afficher dynamiquement les détails de moyens de prévention avec une
+								mise en page propre (gras, listes à
+								puces) sans avoir à écrire du HTML brut.</p>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</section>
+	</main>
+
+	<footer class="container site-footer">
+		<div class="page-navigation">
+			<a href="objectifs.html" class="nav-btn btn-prev">
+				<span class="arrow">←</span>
+				<span class="nav-text"><strong>Précédent :</strong> <small>Objectifs</small></span>
+			</a>
+			<a href="travaux.html" class="nav-btn btn-next">
+				<span class="nav-text"><strong>Suivant :</strong> <small>Travaux</small></span>
+				<span class="arrow">→</span>
+			</a>
+		</div>
+
+		<hr class="footer-divider">
+		<p class="footer-credits">Paul Andrieu - Rapport de stage INRS - 2026</p>
+	</footer>
+</body>
+
+</html>
