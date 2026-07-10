@@ -384,6 +384,7 @@
 
 
 			<br><br>
+			<hr style="border: 1px solid #e2e8f0; margin: 40px 0;">
 			<span class="tag">Modifications fonctionnelles</span>
 			<br><br>
 			<div class="work-environment-body">
@@ -475,7 +476,6 @@
 				</div>
 			</div>
 
-			<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
 
 			<div class="work-environment-body">
 				<h3>2. Implémentation du graphe</h3>
@@ -533,7 +533,6 @@
 				</div>
 			</div>
 
-			<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
 
 			<div class="work-environment-body">
 				<h3>3. Matrice de décision et automatisation des tests</h3>
@@ -655,7 +654,6 @@
 				</div>
 			</div>
 
-			<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
 
 			<div class="work-environment-body" style="margin-top: 30px;">
 				<h3>2. Concepts clés : Temps d'arrêt et Résolution pour le calcul de la distance de sécurité</h3>
@@ -682,7 +680,6 @@
 				</ul>
 			</div>
 
-			<hr style="border: 0; border-top: 1px solid #e2e8f0; margin: 20px 0;">
 
 			<div class="work-environment-body">
 				<h3>3. Configuration des calculateurs</h3>
@@ -774,6 +771,113 @@
 				<img src="img/bi.png" alt="Image de barrière immatérielle"
 					style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
 			</div>
+
+			<hr style="border: 1px solid #e2e8f0; margin: 40px 0;">
+			<br>
+			<span class="tag">Modifications du rapport PDF</span>
+			<br>
+
+			<div class="work-environment-body" style="margin-top: 20px;">
+				<h2>Génération de rapports PDF</h2>
+				<p>
+					J'ai fais évoluer le module de génération de rapports PDF afin qu'il soit plus complet et conforme
+					aux exigences de normalisation et de documentation INRS.<br>
+					<strong><code>@react-pdf/renderer</code></strong>, est le module qui compile l'intégralité des
+					données
+					de la cellule (dimensions géométriques, matrice des risques, tâches
+					associées et résultats des calculs de distance).
+				</p>
+			</div>
+
+			<div class="work-environment-body" style="margin-top: 30px;">
+				<h3>1. Logique de la génération</h3>
+				<p>
+					Le flux de traitement des données est découpé en trois phases principales
+					(Entrée, Rendu et Export).
+				</p>
+
+				<div
+					style="display: flex; gap: 20px; margin: 25px 0; justify-content: center; align-items: flex-start; flex-wrap: nowrap;">
+					<figure class="architecture-figure" style="margin: 0; text-align: center; flex: 1;">
+						<a href="#img-flux-pdf" id="anchor-flux-pdf">
+							<img src="img/flux_pdf.png" alt="Flux de génération du rapport PDF" class="embedded-img"
+								style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 10px; background-color: #ffffff;" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+							Figure 17 : Diagramme d'activité sur le flux de génération du rapport PDF
+						</figcaption>
+					</figure>
+				</div>
+
+				<div class="lightbox-overlay" id="img-flux-pdf">
+					<a href="#anchor-flux-pdf" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/flux_pdf.png" alt="Flux de génération du rapport PDF"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px; padding: 10px; background-color: #ffffff;">
+				</div>
+			</div>
+
+			<div class="work-environment-body" style="margin-top: 30px;">
+				<h3>2. Optimisations et rendu</h3>
+				<p>
+					L'utilisation de <code>@react-pdf/renderer</code> impose certaines contraintes techniques, notamment
+					l'incompatibilité avec le module react-markdown.
+				</p>
+
+				<ul class="work-environment-list">
+					<li>
+						<strong>Rendu markdown (<code>renderMarkdownInline</code>) :</strong>
+						Afin d'avoir un rendu visuel conforme aux attentes, j'ai développé un parseur de texte
+						basé sur une expression régulière (regex). Cette dernière détecte les balises de style (gras,
+						italique, puces) et les convertit en composants React PDF équivalents.
+					</li>
+				</ul>
+
+				<div
+					style="display: flex; gap: 20px; margin: 25px 0; justify-content: center; align-items: flex-start; flex-wrap: nowrap;">
+					<figure class="architecture-figure" style="margin: 0; text-align: center; flex: 1;">
+						<a href="#img-src-markdown" id="anchor-src-markdown">
+							<img src="img/parse_md.png" alt="Regex de parsing Markdown inline" class="embedded-img"
+								style="width: 100%; max-width: 680px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+							Figure 18 : Expression régulière développée pour le style textuel dans le rendu PDF
+						</figcaption>
+					</figure>
+				</div>
+				<ul class="work-environment-list" style="margin-top: 30px;">
+					<li>
+						<strong>Composant générique (<code>BlockContainerPdf</code>) :</strong>
+						L'utilisation d'un composant global permet de gérer l'ensemble des sections du rapport PDF. Il encapsule les styles, les marges et les
+						espacements, garantissant une cohérence visuelle et facilitant la maintenance du code.
+					</li>
+				</ul>
+
+				<div
+					style="display: flex; gap: 20px; margin: 25px 0; justify-content: center; align-items: flex-start; flex-wrap: nowrap;">
+					<figure class="architecture-figure" style="margin: 0; text-align: center; flex: 1;">
+						<a href="#img-src-container" id="anchor-src-container">
+							<img src="img/pdf_container.png" alt="Composant BlockContainerPdf source"
+								class="embedded-img"
+								style="width: 100%; max-width: 680px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+							Figure 19 : Structure et propriétés d'affichage du composant d'encapsulation global
+						</figcaption>
+					</figure>
+				</div>
+
+				<div class="lightbox-overlay" id="img-src-markdown">
+					<a href="#anchor-src-markdown" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/parse_md.png" alt="Regex de parsing Markdown inline"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
+				</div>
+				<div class="lightbox-overlay" id="img-src-container">
+					<a href="#anchor-src-container" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/pdf_container.png" alt="Composant BlockContainerPdf source"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
+				</div>
+			</div>
+
 		</section>
 	</main>
 
