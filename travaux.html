@@ -61,22 +61,23 @@
 					alternant a grandement facilité mon travail ainsi que la compréhension du code et des enjeux liés
 					à la robotique, et plus particulièrement à la robotique collaborative.
 				</p>
+				<br><br>
 			</div>
-			<br>
 			<span class="tag">Modifications ergonomiques (UX, UI)</span>
-
+			<br>
 			<div class="section-heading">
 				<h2>Gestion des raccourcis clavier et de l'historique (Undo/Redo)</h2>
 			</div>
-
+			<br>
 			<div class="work-environment-body">
 				<p>
 					Afin d'améliorer l'ergonomie globale et d'offrir une expérience utilisateur proche d'un outil de
 					dessin classique, j'ai implémenté un système complet de gestion des raccourcis clavier.
 				</p>
+				<br>
 				<p>
 					<a href="resultats.html#ctrl-video">
-						<span class="tag"> Voir l'exemple vidéo</span>
+						<span class="tag" style="text-decoration: underline;">Voir l'exemple vidéo</span>
 					</a>
 				</p>
 			</div>
@@ -145,12 +146,14 @@
 			<br>
 
 			<div class="work-environment-body">
+				<br>
 				<h2>Persistance des données et sauvegarde navigateur (sessionStorage)</h2>
 				<p>
 					Afin d'éviter toute perte de travail suite à une fermeture accidentelle du navigateur ou à un
 					rafraîchissement de la page, j'ai mis en place un mécanisme de sauvegarde automatique locale basé
 					sur l'API <code>sessionStorage</code>.
 				</p>
+				<br>
 			</div>
 
 			<div class="architecture-grid">
@@ -307,7 +310,7 @@
 			</div>
 			<br>
 			<a href="resultats.html#svg-video">
-				<span class="tag"> Voir l'exemple vidéo</span>
+				<span class="tag" style="text-decoration: underline;">Voir l'exemple vidéo</span>
 			</a>
 
 			<div class="architecture-grid">
@@ -587,7 +590,7 @@
 							target="_blank">ISO 13854</a></strong>), on peut
 					aussi se référer à la fiche INRS <strong><a href="https://www.inrs.fr/media.html?refINRS=ED%206122"
 							target="_blank">ED6122</a></strong> permettant d'aider l'intégrateur à
-					l'implantation physique 
+					l'implantation physique
 					de ces dispositifs en fonction de leurs résolutions et temps d'arrêt.
 				</p>
 			</div>
@@ -774,13 +777,234 @@
 			</div>
 			<br>
 			<div class="work-environment-body" style="margin-top: 30px;">
-				<h3>Affichage de la flèche correspondante à la distance de sécurité calculée</h3>
+				<h2>Affichage de la flèche correspondante à la distance de sécurité calculée</h2>
+				<br>
 				<a href="resultats.html#fleche-video">
-						<span class="tag"> Voir l'exemple vidéo</span>
-					</a>
-				<br>	
-				<p> 
-					
+					<span class="tag" style="text-decoration: underline;">Voir l'exemple vidéo</span>
+				</a>
+				<br>
+				<p>
+					Pour garantir la bonne représentation de l'espace de travail, l'application calcule (via les
+					calculateurs détaillés dans la section précédente) et affiche
+					dynamiquement une flèche représentant la distance de sécurité minimale (S). Ce tracé relie
+					visuellement le point le plus proche de la zone restreinte à
+					l'ouverture créée.
+				</p>
+				<p>
+					Pour permettre sa mise en oeuvre, plusieurs étapes de calcul géométrique sont réalisées :
+				</p>
+				<ul class="work-environment-list">
+					<li>
+						<strong>Calcul de la distance minimale au contour (Figure 20) :</strong>
+						L'algorithme parcourt chaque segment [p<sub>1</sub>, p<sub>2</sub>] formant le contour
+						de la zone restreinte. Pour chaque segment, la fonction <code>distanceToSegment</code> de la
+						classe <code>SegmentData</code> détermine le point le plus proche sur le contour de la zone. Le
+						point
+						d'origine de la flèche et son point de passage (sur l'ouverture) sont ainsi
+						définis par le couple de points minimisant cette distance globale.
+					</li>
+					<br>
+					<li>
+						<strong>Calcul vectoriel de l'orientation et de la projection :</strong>
+						Le vecteur reliant la zone restreinte à l'ouverture est normalisé pour obtenir des vecteurs
+						directeurs unitaires (ux, uy). Si la distance minimale (S) dépasse les limites de l'espace
+						protégé (grilles)
+						(<code>desiredPx > currentLen</code>), l'application considère un dépassement
+						(<code>exceeds: true</code>) et génère l'affichage d'une ouverture suggérée (O') à la bonne
+						distance de sécurité.
+					</li>
+					<br>
+					<li>
+						<strong>Glissement dynamique (Figure 21) :</strong>
+						La fonction <code>handleDrag()</code> de la classe <code>OpeningComponent</code> ajuste en temps
+						réel la position
+						de la flèche par rapport à l'ouverture et à la zone restreinte.
+					</li>
+				</ul>
+				<br>
+
+				<h3>Détail de la modélisation et des calculs géométriques</h3>
+				<p>
+					Les classes<code>SegmentData</code> et <code>OpeningComponent</code> montrent
+					les étapes de calcul utilisées pour manipuler et projeter la flèche correspondante :
+				</p>
+
+				<div
+					style="background-color: #f8fafc; border-left: 4px solid #e85d17; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+					<h5 style="margin-top: 0; color: #e85d17;">1. Distance minimale entre deux segments
+						(<code>distanceToSegment</code>)</h5>
+					<p>
+						Pour évaluer l'écart exact entre l'ouverture (segment U) et l'un des bords de la
+						zone restreinte (segment V), on résout :
+					</p>
+					<p style="margin-bottom: 8px;">
+						Soit le vecteur de l'ouverture <span style="text-decoration: overline;">u</span> = p<sub>2</sub>
+						- p<sub>1</sub> et le vecteur du segment de la zone <span
+							style="text-decoration: overline;">v</span> = p<sub>4</sub> - p<sub>3</sub>. <br>On définit
+						les
+						produits scalaires suivants :
+					</p>
+					<div
+						style="font-family: 'Courier New', monospace; font-size: 0.95em; margin: 10px 0; padding-left: 15px; color: #1e293b;">
+						a = <span style="text-decoration: overline;">u</span> &middot; <span
+							style="text-decoration: overline;">u</span>, &nbsp;
+						b = <span style="text-decoration: overline;">u</span> &middot; <span
+							style="text-decoration: overline;">v</span>, &nbsp;
+						c = <span style="text-decoration: overline;">v</span> &middot; <span
+							style="text-decoration: overline;">v</span>, &nbsp;
+						d = <span style="text-decoration: overline;">u</span> &middot; <span
+							style="text-decoration: overline;">w</span>, &nbsp;
+						e = <span style="text-decoration: overline;">v</span> &middot; <span
+							style="text-decoration: overline;">w</span>
+					</div>
+					<p style="margin-bottom: 8px;">
+						Où <span style="text-decoration: overline;">w</span> = p<sub>1</sub> - p<sub>3</sub>. <br>Le
+						discriminant est calculé par :
+					</p>
+					<div
+						style="text-align: center; margin: 10px 0; font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.1em; color: #1e293b;">
+						D = a &middot; c - b<sup>2</sup>
+					</div>
+
+					<p style="margin-top: 10px; font-style: italic; color: #475569;">
+						<strong>Gestion des cas particuliers :</strong>
+					</p>
+					<ul style="margin-top: 5px; margin-bottom: 0; padding-left: 20px; font-size: 0.95em;">
+						<li>
+							<strong>Perpendicularité (b ≈ 0) :</strong> Si les segments forment un angle droit, les
+							calculs
+							se simplifient. L'algorithme détermine la position sur chaque segment de façon totalement
+							indépendante
+							(avant d'appliquer un clamp entre 0 et 1).
+						</li>
+						<li>
+							<strong>Parallélisme (D ≈ 0) :</strong> Si les segments sont parallèles, il y a une infinité
+							de points
+							les plus proches. Pour éviter que le calcul ne tourne en rond, l'algorithme se fixe par
+							défaut sur le début
+							du premier segment (sc = 0) pour projeter le point en face.
+						</li>
+						<li>
+							<strong>Repli sur le centre :</strong>
+							Après avoir calculé sc et tc, l'algorithme compare cette distance à celle obtenue
+							entre le centre de l'ouverture et le contour (<code>distanceFromCenter</code>).
+							Si le calcul segment-segment ne donne pas un meilleur résultat, l'application
+							garde plutôt le centre de l'ouverture comme point de départ de la flèche.
+						</li>
+					</ul>
+				</div>
+
+				<div
+					style="background-color: #f8fafc; border-left: 4px solid #e85d17; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+					<h5 style="margin-top: 0; color: #e85d17;">2. Projection de l'ouverture et gestion du glissement
+						(<code>handleDrag</code>)</h5>
+					<p>
+						Lorsqu'un utilisateur glisse (<code>drag</code>) l'ouverture, celle-ci doit rester alignée sur
+						son
+						segment de barrière.
+					</p>
+					<p style="margin-bottom: 8px;">
+						L'algorithme calcule le paramètre <strong>t</strong> (compris entre 0 et
+						1) du centre projeté sur le segment de la barrière :
+					</p>
+					<div
+						style="text-align: center; margin: 15px 0; font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.05em; color: #1e293b;">
+						t = ( (projected.x - startingPoint.x) &middot; bDx + (projected.y - startingPoint.y) &middot;
+						bDy ) / (barrierLen<sup>2</sup>)
+					</div>
+					<p style="margin-bottom: 8px;">
+						Pour empêcher l'ouverture de dépasser de la barrière, on applique un
+						clamp sur ce paramètre en fonction de la demi-longueur de l'ouverture (halfLength) :
+					</p>
+					<div
+						style="text-align: center; margin: 15px 0; font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.05em; color: #1e293b;">
+						t<sub> clamped</sub> = max( halfLength / barrierLen , min( 1 - halfLength / barrierLen , t ) )
+					</div>
+					<p style="margin-bottom: 0;">
+						Le nouveau centre est reconstruit à partir de t<sub> clamped</sub> pour repositionner
+						l'ouverture.
+					</p>
+				</div>
+
+				<div
+					style="background-color: #f8fafc; border-left: 4px solid #e85d17; padding: 15px; margin: 20px 0; border-radius: 0 8px 8px 0;">
+					<h5 style="margin-top: 0; color: #e85d17;">3. L'ouverture suggérée
+						(O')</h5>
+					<p>
+						Lorsque la distance de sécurité S (mesurée en millimètres, puis convertie en pixels via
+						le ratio <code>400/1000 px/mm</code>) dépasse la grille, une ouverture
+						suggérée O' est projetée parallèlement à l'ouverture initiale.
+					</p>
+					<p style="margin-bottom: 8px;">
+						Si la direction de la flèche est orthogonale à la barrière (produit scalaire
+						<code>dotProduct &lt; 0.05</code>), l'application calcule la perpendiculaire
+						<code>perpOffset</code>. Le centre de l'ouverture suggérée O' est alors décalé le long du
+						vecteur normal
+						<span style="text-decoration: overline;">perp</span> = (-barrierUy, barrierUx) :
+					</p>
+					<div
+						style="text-align: center; margin: 15px 0; font-family: 'Courier New', monospace; font-weight: bold; font-size: 1.05em; color: #1e293b;">
+						O'<sub>centre</sub> = O<sub>centre</sub> + <span style="text-decoration: overline;">perp</span>
+						&middot; perpOffset
+					</div>
+					<p style="margin-bottom: 0;">
+						Les extrémités de cette ouverture suggérée (<code>lineStartX</code>, <code>lineStartY</code>) et
+						(<code>lineEndX</code>, <code>lineEndY</code>) de
+						O' sont ensuite
+						reconstruites de part et d'autre de ce nouveau centre en y appliquant le
+						vecteur directeur unitaire de la barrière multiplié par la demi-longueur <code>halfLen</code>.
+					</p>
+				</div>
+
+				<div
+					style="display: flex; gap: 20px; margin: 25px 0; justify-content: center; align-items: flex-start; flex-wrap: wrap;">
+
+					<figure class="architecture-figure"
+						style="margin: 0; text-align: center; flex: 1; min-width: 320px;">
+						<a href="#img-calcul-fleche" id="anchor-calcul-fleche">
+							<img src="img/fleche_calc.png"
+								alt="Algorithme de calcul de la distance de sécurité minimale et des vecteurs de la flèche"
+								class="embedded-img tab"
+								style="width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+							Figure 20 : Algorithme de calcul de la trajectoire et de l'orientation de la flèche
+						</figcaption>
+					</figure>
+
+					<figure class="architecture-figure"
+						style="margin: 0; text-align: center; flex: 1; min-width: 320px;">
+						<a href="#img-drag-constraint" id="anchor-drag-constraint">
+							<img src="img/drag.png"
+								alt="Gestion des contraintes de glissement et de projection sur la barrière"
+								class="embedded-img tab"
+								style="width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
+						</a>
+						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
+							Figure 21 : Logique de projection géométrique et de clamping de l'ouverture lors du drag &
+							drop
+						</figcaption>
+					</figure>
+					<p class="note-text" style="font-size: 0.85em; color: #475569; margin-top: 10px;">
+						Note : Un <code>clamp</code> est une opération qui consiste à restreindre une valeur entre une
+						limite
+						minimale et une limite maximale. Si la valeur dépasse la borne supérieure, elle est ramenée au
+						maximum. Si elle descend en dessous de la borne inférieure, elle est ramenée au minimum. Sinon,
+						elle reste inchangée.</p>
+				</div>
+				<div class="lightbox-overlay" id="img-calcul-fleche">
+					<a href="#anchor-calcul-fleche" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/fleche_calc.png"
+						alt="Algorithme de calcul de la distance de sécurité minimale et des vecteurs de la flèche"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
+				</div>
+				<div class="lightbox-overlay" id="img-drag-constraint">
+					<a href="#anchor-drag-constraint" class="lightbox-close" aria-label="Fermer">&times;</a>
+					<img src="img/drag.png" alt="Gestion du drag en temps réel"
+						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
+				</div>
+			</div>
+
 
 			<hr style="border: 1px solid #e2e8f0; margin: 40px 0;">
 			<br>
@@ -814,7 +1038,7 @@
 								style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 10px; background-color: #ffffff;" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 17 : Diagramme d'activité sur le flux de génération du rapport PDF
+							Figure 22 : Diagramme d'activité sur le flux de génération du rapport PDF
 						</figcaption>
 					</figure>
 				</div>
@@ -850,14 +1074,15 @@
 								style="width: 100%; max-width: 680px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 18 : Expression régulière développée pour le style textuel dans le rendu PDF
+							Figure 23 : Expression régulière développée pour le style textuel dans le rendu PDF
 						</figcaption>
 					</figure>
 				</div>
 				<ul class="work-environment-list" style="margin-top: 30px;">
 					<li>
 						<strong>Composant générique (<code>BlockContainerPdf</code>) :</strong>
-						L'utilisation d'un composant global permet de gérer l'ensemble des sections du rapport PDF. Il encapsule les styles, les marges et les
+						L'utilisation d'un composant global permet de gérer l'ensemble des sections du rapport PDF. Il
+						encapsule les styles, les marges et les
 						espacements, garantissant une cohérence visuelle et facilitant la maintenance du code.
 					</li>
 				</ul>
@@ -871,7 +1096,7 @@
 								style="width: 100%; max-width: 680px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 19 : Structure et propriétés d'affichage du composant d'encapsulation global
+							Figure 24 : Structure et propriétés d'affichage du composant d'encapsulation global
 						</figcaption>
 					</figure>
 				</div>
