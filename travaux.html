@@ -38,6 +38,7 @@
 			<p class="toc-title">Sommaire</p>
 			<ul>
 				<li><a href="#methode-travail">Méthode de travail</a></li>
+				<li><a href="#etat-inital">État initial de l'application</a></li>
 				<li><a href="#raccourcis-clavier">Raccourcis clavier & historique</a></li>
 				<li><a href="#persistance-donnees">Persistance des données</a></li>
 				<li><a href="#menu-navigation">Menu de navigation</a></li>
@@ -67,9 +68,8 @@
 					machines et en prévention des risques liés à l’usage de robots en milieu industriel.
 				</p>
 				<p>
-					Les fonctionnalités principales de l'application, comme les outils de dessin, le konva ect...
-					étaient déjà
-					mises en place, mon but était donc de faire évoluer cette application pour la rendre complète
+					Les fonctionnalités principales de l'application étant conformes aux exigences, mon but était donc
+					de faire évoluer cette application pour la rendre complète
 					et ergonomique afin de la préparer au déploiement.
 				</p>
 				<p>
@@ -79,6 +79,21 @@
 				</p>
 				<br><br>
 			</div>
+
+			<div class="work-environment-body">
+				<h2 id="etat-inital">État initial de l'application</h2>
+				<p>
+					À mon arrivée, l'application était déjà fonctionnelle. Elle permettait notamment de
+					créer des cellules via Konva, le système de graphe était en place, mais voué à
+					des changements qui allaient se répercuter sur l'ensemble de son raisonnement.
+					L'architecture générale du projet était déjà posée, avec une séparation claire entre
+					les composants (<code>components</code>), les modèles de données (<code>data</code>),
+					les énumérations (<code>enums</code>), les hooks (<code>hooks</code>),
+					les fonctions utilitaires (<code>lib</code>), incluant également le
+					fichier <code>text.json</code> centralisant les textes de l'application.
+				</p>
+			</div>
+			<br><br>
 			<span class="tag">Modifications ergonomiques (UX, UI)</span>
 			<br>
 			<div class="section-heading">
@@ -1075,7 +1090,7 @@
 				<h3 id="optimisations-rendu">2. Optimisations et rendu</h3>
 				<p>
 					L'utilisation de <code>@react-pdf/renderer</code> impose certaines contraintes techniques, notamment
-					l'incompatibilité avec le module react-markdown.
+					l'incompatibilité avec le module <code>@react-markdown</code>.
 				</p>
 
 				<ul class="work-environment-list">
