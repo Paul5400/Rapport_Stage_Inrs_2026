@@ -856,3 +856,70 @@ code {
 	line-height: 1;
 	text-decoration: none;
 }
+
+:root {
+	--container-max-width: 1000px; 
+}
+
+.toc-sidebar {
+	position: fixed;
+	top: 140px;
+	left: calc((100vw - var(--container-max-width)) / 2 - 270px);
+	width: 250px;
+	z-index: 10;
+}
+
+.toc-nav {
+	background: #fff;
+	border: 1px solid #e2e8f0;
+	border-radius: 14px;
+	padding: 1.25rem 1rem;
+	max-height: calc(100vh - 180px);
+	overflow-y: auto;
+}
+
+.toc-title {
+	font-size: 0.75rem;
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	color: #94a3b8;
+	margin: 0 0 0.75rem 0;
+	font-weight: 700;
+}
+
+.toc-nav ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: grid;
+	gap: 0.15rem;
+}
+
+.toc-nav a {
+	display: block;
+	padding: 0.45rem 0.6rem;
+	border-radius: 8px;
+	color: #475569;
+	text-decoration: none;
+	font-size: 0.88rem;
+	line-height: 1.4;
+	border-left: 2px solid transparent;
+	transition: background-color 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+
+.toc-nav a:hover {
+	background-color: #f1f5f9;
+	color: #e85d17;
+	border-left-color: #e85d17;
+}
+
+[id] {
+	scroll-margin-top: 24px;
+}
+
+
+@media (max-width: calc(1000px + 620px)) {
+	.toc-sidebar {
+		display: none;
+	}
+}

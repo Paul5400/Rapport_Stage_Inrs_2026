@@ -33,27 +33,44 @@
 			</nav>
 		</div>
 	</header>
+	<aside class="toc-sidebar">
+		<nav class="toc-nav" aria-label="Sommaire de la page">
+			<p class="toc-title">Sommaire</p>
+			<ul>
+				<li><a href="#methode-travail">Méthode de travail</a></li>
+				<li><a href="#raccourcis-clavier">Raccourcis clavier & historique</a></li>
+				<li><a href="#persistance-donnees">Persistance des données</a></li>
+				<li><a href="#menu-navigation">Menu de navigation</a></li>
+				<li><a href="#visualisation-dynamique">Visualisation dynamique des ouvertures</a></li>
+				<li><a href="#validation-tests">Tests de régression</a></li>
+				<li><a href="#calculateurs-distance">Calculateurs de distance minimale</a></li>
+				<li><a href="#affichage-fleche">Flèche de distance de sécurité</a></li>
+				<li><a href="#generation-rapports-pdf">Génération de rapport PDF</a></li>
+			</ul>
+		</nav>
+	</aside>
 
-	<main class="container page-grid">
+	<main class="container page-grid-with-toc">
 		<section class="card">
-			<h2>Méthode de travail</h2>
+			<h2 id="methode-travail">Méthode de travail</h2>
 			<div class="work-environment-body">
 				<p>
 					J’ai travaillé en autonomie sur le développement de cet outil, en suivant un cahier des charges
 					intial donné
-					en début de stage, dans lequel les fonctionnalités prévues étaient définies.
+					en début de stage, dans lequel les fonctionnalités attendues étaient définies.
 				</p>
 				<p>
 					Nous faisions un point hebdomadaire pour valider les avancées, discuter des choix ergonomiques
 					ou techniques, et ajuster certaines priorités. Ce fonctionnement itératif m’a permis de prendre
-					des initiatives sur le plan technique et fonctionnel tout en m’appuyant sur leur expertise en sécurité des
+					des initiatives sur le plan technique et fonctionnel tout en m’appuyant sur leur expertise en
+					sécurité des
 					machines et en prévention des risques liés à l’usage de robots en milieu industriel.
 				</p>
 				<p>
 					Les fonctionnalités principales de l'application, comme les outils de dessin, le konva ect...
 					étaient déjà
 					mises en place, mon but était donc de faire évoluer cette application pour la rendre complète
-					et ergonomique afin de la rendre prête au déploiement.
+					et ergonomique afin de la préparer au déploiement.
 				</p>
 				<p>
 					De plus, l'application ayant été développée au préalable par un stagiaire devenu aujourd'hui
@@ -65,12 +82,13 @@
 			<span class="tag">Modifications ergonomiques (UX, UI)</span>
 			<br>
 			<div class="section-heading">
-				<h2>Gestion des raccourcis clavier et de l'historique (Undo/Redo)</h2>
+				<h2 id="raccourcis-clavier">Gestion des raccourcis clavier et de l'historique (Undo/Redo)</h2>
 			</div>
 			<br>
 			<div class="work-environment-body">
 				<p>
-					Dans l'objectif d'améliorer l'ergonomie globale et d'offrir une expérience utilisateur proche d'un outil de
+					Dans l'objectif d'améliorer l'ergonomie globale et d'offrir une expérience utilisateur proche d'un
+					outil de
 					dessin classique, j'ai implémenté un système complet de gestion des raccourcis clavier.
 				</p>
 				<br>
@@ -146,7 +164,7 @@
 
 			<div class="work-environment-body">
 				<br>
-				<h2>Persistance des données et sauvegarde navigateur (sessionStorage)</h2>
+				<h2 id="persistance-donnees">Persistance des données et sauvegarde navigateur (sessionStorage)</h2>
 				<p>
 					Pour éviter toute perte de travail suite à une fermeture accidentelle du navigateur ou à un
 					rafraîchissement de la page, j'ai mis en place un mécanisme de sauvegarde automatique locale basé
@@ -227,7 +245,7 @@
 
 			<div class="work-environment-body">
 				<br>
-				<h2>Menu de navigation et chronologie de la phase de conception</h2>
+				<h2 id="menu-navigation">Menu de navigation et chronologie de la phase de conception</h2>
 				<p>
 					Afin de guider l'utilisateur pas à pas à travers les différentes étapes de la conception de la
 					cellule robotique, j'ai
@@ -299,9 +317,10 @@
 			</div>
 			<div class="work-environment-body">
 				<br>
-				<h2>Visualisation dynamique des ouvertures (Composant SVG)</h2>
+				<h2 id="visualisation-dynamique">Visualisation dynamique des ouvertures (Composant SVG)</h2>
 				<p>
-					Dans le but d'avoir un rendu visuel instantané lors de la saisie des dimensions d'une ouverture (passage
+					Dans le but d'avoir un rendu visuel instantané lors de la saisie des dimensions d'une ouverture
+					(passage
 					dans la grille), j'ai développé un composant vectoriel basé sur l'élément SVG (Scalable
 					Vector Graphics). <br>Ce module permet d'illustrer la largeur, la hauteur ainsi que la distance de
 					l'ouverture par rapport au sol.
@@ -390,7 +409,7 @@
 			<span class="tag">Modifications fonctionnelles</span>
 			<br><br>
 			<div class="work-environment-body">
-				<h2>Validation et Tests de Régression du Graphe de Décision</h2>
+				<h2 id="validation-tests">Validation et Tests de Régression du Graphe de Décision</h2>
 				<p>
 					Pour garantir la fiabilité de l'application face aux évolutions futures du code, une stratégie
 					de <strong>tests de régression</strong> a été mise en place.
@@ -411,7 +430,8 @@
 				<ul class="work-environment-list">
 					<li>
 						<strong>Le flux principal :</strong> Ce logigramme comprend l'étape
-						globale de <strong>réduction des risques</strong>. Il analyse séquentiellement les types de risques
+						globale de <strong>réduction des risques</strong>. Il analyse séquentiellement les types de
+						risques
 						(choc, écrasement, éjection...) oriente vers la solution
 						matérielle appropriée (détecteurs de franchissements, protecteurs mobiles, etc.) en fonction des
 						réponses de l'utilisateur.
@@ -459,7 +479,7 @@
 				</div>
 
 				<p style="font-style: italic; font-size: 0.9em; color: #555; text-align: center; margin-bottom: 30px;">
-					Figure 12 : Logigrammes correspondant aux flux de décisions de l'application
+					Figure 13 : Logigrammes correspondant aux flux de décisions de l'application
 				</p>
 
 				<div class="lightbox-overlay" id="img-v35-1">
@@ -520,7 +540,7 @@
 					</figure>
 				</div>
 				<p style="font-style: italic; font-size: 0.9em; color: #555; text-align: center; margin-bottom: 30px;">
-					Figure 13 : Extraits de code sur le graphe et le fichier de test associé
+					Figure 14 : Extraits de code sur le graphe et le fichier de test associé
 				</p>
 
 				<div class="lightbox-overlay" id="img-testlogicode">
@@ -565,7 +585,7 @@
 							style="width: 100%; max-width: 850px; height: auto; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
 					</a>
 					<p style="font-style: italic; font-size: 0.9em; color: #555; margin-top: 10px;">
-						Figure 14 : Fichier CSV de la matrice de décision
+						Figure 15 : Fichier CSV de la matrice de décision
 					</p>
 				</div>
 
@@ -577,7 +597,7 @@
 			</div>
 			<br>
 			<div class="work-environment-body">
-				<h2>Calculateurs de distance de sécurité</h2>
+				<h2 id="calculateurs-distance">Calculateurs de distance de sécurité</h2>
 				<p>
 					L'utilisation des <strong>dispositifs de détection de franchissement</strong> est régie par rapport
 					aux exigences des
@@ -595,7 +615,7 @@
 			</div>
 
 			<div class="work-environment-body" style="margin-top: 30px;">
-				<h3>1. Dispositifs de détection de franchissement</h3>
+				<h3 id="dispositifs-detection">1. Dispositifs de détection de franchissement</h3>
 				<p>
 					L'application propose des formulaires de calcul spécifiques adaptés aux différents dispositifs ayant
 					des règles similaires :
@@ -627,7 +647,7 @@
 									style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 							</a>
 							<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-								Figure 15 : Interface du module de calcul des distances de sécurité
+								Figure 16 : Interface du module de calcul des distances de sécurité
 							</figcaption>
 						</figure>
 					</div>
@@ -639,7 +659,7 @@
 								style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 16 : Pop-up de documentation concernant le moyen sélectionné
+							Figure 17 : Pop-up de documentation concernant le moyen sélectionné
 						</figcaption>
 					</figure>
 				</div>
@@ -658,7 +678,8 @@
 
 
 			<div class="work-environment-body" style="margin-top: 30px;">
-				<h3>2. Concepts clés : Temps d'arrêt et Résolution pour le calcul de la distance de sécurité</h3>
+				<h3 id="concepts-cles">2. Concepts clés : Temps d'arrêt et Résolution pour le calcul de la distance de
+					sécurité</h3>
 				<p>
 					Le positionnement de ces dispositifs de détection de franchissement
 					repose sur le calcul de la <strong>distance de sécurité
@@ -685,7 +706,7 @@
 
 
 			<div class="work-environment-body">
-				<h3>3. Configuration des calculateurs</h3>
+				<h3 id="configuration-calculateurs">3. Configuration des calculateurs</h3>
 				<p>
 					Pour simplifier l'implémentation de ces calculateurs, on centralise l'ensemble des règles de
 					calcul au sein d'une structure de données nommée
@@ -706,7 +727,7 @@
 						La fonction de
 						calcul prend en entrée les données du formulaire et applique la formule. Elle renvoie donc la
 						distance de sécurité minimale calculée et injecte cette valeur dans la pop-up de l'interface
-						(Figure 16).
+						(Figure 17).
 					</li>
 					<li>
 						L'objet de configuration intègre une
@@ -728,7 +749,7 @@
 								style="width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 17 : Exemple du calcul pour les barrières immatérielles
+							Figure 18 : Exemple du calcul pour les barrières immatérielles
 						</figcaption>
 					</figure>
 
@@ -740,7 +761,7 @@
 								style="width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 18 : Interface centralisée pour les fonctions de calcul et la génération du texte
+							Figure 19 : Interface centralisée pour les fonctions de calcul et la génération du texte
 						</figcaption>
 					</figure>
 
@@ -751,7 +772,7 @@
 								style="width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 19 : Exemple de barrière immatérielle
+							Figure 20 : Exemple de barrière immatérielle
 						</figcaption>
 
 				</div>
@@ -776,7 +797,7 @@
 			</div>
 			<br>
 			<div class="work-environment-body" style="margin-top: 30px;">
-				<h2>Affichage de la flèche correspondante à la distance de sécurité calculée</h2>
+				<h2 id="affichage-fleche">Affichage de la flèche correspondante à la distance de sécurité calculée</h2>
 				<br>
 				<a href="resultats.html#fleche-video">
 					<span class="tag" style="text-decoration: underline;">Voir l'exemple vidéo</span>
@@ -794,7 +815,7 @@
 				</p>
 				<ul class="work-environment-list">
 					<li>
-						<strong>Calcul de la distance minimale au contour (Figure 20) :</strong>
+						<strong>Calcul de la distance minimale au contour (Figure 21) :</strong>
 						L'algorithme parcourt chaque segment [p<sub>1</sub>, p<sub>2</sub>] formant le contour
 						de la zone restreinte. Pour chaque segment, la fonction <code>distanceToSegment</code> de la
 						classe <code>SegmentData</code> détermine le point le plus proche sur le contour de la zone. Le
@@ -814,7 +835,7 @@
 					</li>
 					<br>
 					<li>
-						<strong>Glissement dynamique (Figure 21) :</strong>
+						<strong>Glissement dynamique (Figure 22) :</strong>
 						La fonction <code>handleDrag()</code> de la classe <code>OpeningComponent</code> ajuste en temps
 						réel la position
 						de la flèche par rapport à l'ouverture et à la zone restreinte.
@@ -822,7 +843,7 @@
 				</ul>
 				<br>
 
-				<h3>Détail de la modélisation et des calculs géométriques</h3>
+				<h3 id="detail-modelisation">Détail de la modélisation et des calculs géométriques</h3>
 				<p>
 					Les classes<code>SegmentData</code> et <code>OpeningComponent</code> montrent
 					les étapes de calcul utilisées pour manipuler et projeter la flèche correspondante :
@@ -967,7 +988,7 @@
 								style="width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 20 : Algorithme de calcul de la trajectoire et de l'orientation de la flèche
+							Figure 21 : Algorithme de calcul de la trajectoire et de l'orientation de la flèche
 						</figcaption>
 					</figure>
 
@@ -980,7 +1001,7 @@
 								style="width: 100%; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 21 : Logique de projection géométrique et de clamping de l'ouverture lors du drag &
+							Figure 22 : Logique de projection géométrique et de clamping de l'ouverture lors du drag &
 							drop
 						</figcaption>
 					</figure>
@@ -1011,9 +1032,10 @@
 			<br>
 
 			<div class="work-environment-body" style="margin-top: 20px;">
-				<h2>Génération de rapports PDF</h2>
+				<h2 id="generation-rapports-pdf">Génération de rapports PDF</h2>
 				<p>
-					J'ai fais évoluer le module de génération de rapports PDF pour faire en sorte qu'il soit plus complet et conforme
+					J'ai fais évoluer le module de génération de rapports PDF pour faire en sorte qu'il soit plus
+					complet et conforme
 					aux exigences de normalisation et de documentation <strong>INRS</strong>.<br>
 					<strong><code>@react-pdf/renderer</code></strong>, est le module qui compile l'intégralité des
 					données
@@ -1023,7 +1045,7 @@
 			</div>
 
 			<div class="work-environment-body" style="margin-top: 30px;">
-				<h3>1. Logique de la génération</h3>
+				<h3 id="logique-generations">1. Logique de la génération</h3>
 				<p>
 					Le flux de traitement des données est découpé en trois phases principales
 					(Entrée, Rendu et Export).
@@ -1037,7 +1059,7 @@
 								style="width: 100%; max-width: 320px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); padding: 10px; background-color: #ffffff;" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 22 : Diagramme d'activité sur le flux de génération du rapport PDF
+							Figure 23 : Diagramme d'activité sur le flux de génération du rapport PDF
 						</figcaption>
 					</figure>
 				</div>
@@ -1050,7 +1072,7 @@
 			</div>
 
 			<div class="work-environment-body" style="margin-top: 30px;">
-				<h3>2. Optimisations et rendu</h3>
+				<h3 id="optimisations-rendu">2. Optimisations et rendu</h3>
 				<p>
 					L'utilisation de <code>@react-pdf/renderer</code> impose certaines contraintes techniques, notamment
 					l'incompatibilité avec le module react-markdown.
@@ -1073,7 +1095,7 @@
 								style="width: 100%; max-width: 680px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 23 : Expression régulière développée pour le style textuel dans le rendu PDF
+							Figure 24 : Expression régulière développée pour le style textuel dans le rendu PDF
 						</figcaption>
 					</figure>
 				</div>
@@ -1095,7 +1117,7 @@
 								style="width: 100%; max-width: 680px; height: auto; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);" />
 						</a>
 						<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px;">
-							Figure 24 : Structure et propriétés d'affichage du composant d'encapsulation global
+							Figure 25 : Structure et propriétés d'affichage du composant d'encapsulation global
 						</figcaption>
 					</figure>
 				</div>
