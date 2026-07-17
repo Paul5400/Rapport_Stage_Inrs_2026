@@ -431,7 +431,7 @@
 					L'objectif principal est de s'assurer que les modifications apportées à l'arbre décisionnel
 					n'introduisent pas d'erreurs dans le calcul des solutions de prévention ou dans le parcours
 					séquentiel.
-					Cette validation s'appuie sur le test de notre <strong>graphe orienté</strong>, où
+					Cette validation s'appuie sur le test de notre <strong>graphe dirigé acyclique</strong>, où
 					chaque nœud représente une question et chaque arête représente une transition conditionnelle.
 				</p>
 			</div>
@@ -518,8 +518,7 @@
 				<h3>2. Implémentation du graphe</h3>
 				<p>
 					Pour transposer ces logigrammes en code, la logique n'a pas été écrite
-					sous forme de conditions imbriquées. À la place, un système de <strong>graphe orienté
-					</strong> a été développé.
+					sous forme de conditions imbriquées. À la place, un système de <strong>graphe dirigé acyclique</strong> a été développé.
 				</p>
 				<ul class="work-environment-list">
 					<li>
