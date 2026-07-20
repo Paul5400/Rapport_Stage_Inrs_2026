@@ -120,93 +120,90 @@
 			<div class="work-environment-body" style="margin-top: 30px;">
 				<h2>Glossaire</h2>
 				<ul class="work-environment-list">
-					<li>
-						<strong>Intégrateur :</strong>
+					<li id="integrateur">
+						<strong>Intégrateur</a> :</strong>
 						Entreprise ou professionnel chargé de concevoir, assembler et mettre en service
 						une cellule robotisée, en veillant à sa conformité et à sa sécurité.
 					</li>
-					<li>
+					<li id="client">
+						<strong>Client :</strong>
+						Personne ou entreprise qui souhaite intégrer un robot collaboratif dans son environnement de
+						travail et qui fait appel à un intégrateur pour concevoir la cellule robotique collaborative.
+					</li>
+					<li id="espace-protégé">
 						<strong>Espace protégé :</strong>
 						Périmètre matérialisé par des protecteurs fixes (ex : grillages) délimitant la
 						zone de sécurité autour de la cellule robotique.
 					</li>
-					<li>
+					<li id="zone-restreinte">
+
 						<strong>Zone restreinte :</strong>
 						Zone au sein de l'espace protégé où évolue le robot et dans laquelle sa présence
 						constitue un danger potentiel pour un opérateur.
 					</li>
-					<li>
+					<li id="ouverture">
 						<strong>Ouverture :</strong>
 						Point d'accès créé sur les limites de l'espace protégé (grille), permettant à un
 						opérateur d'intervenir dans la cellule pour réaliser une tâche.
 					</li>
-					<li>
+					<li id="barrière">
 						<strong>Barrière :</strong>
 						Segment physique de l'espace protégé sur lequel une ouverture est positionnée et
 						le long duquel elle peut être déplacée.
 					</li>
-					<li>
+					<li id="tâche">
 						<strong>Tâche :</strong>
 						Action réalisée par un opérateur en interaction avec la cellule robotisée
 						(maintenance, observation, ajustement, etc.), associée à une ouverture.
 					</li>
-					<li>
+					<li id="risque">
 						<strong>Risque :</strong>
 						Événement potentiel pouvant causer un dommage à l'opérateur (choc, écrasement,
 						éjection, ou risque non mécanique).
 					</li>
-					<li>
+					<li id="pfl">
 						<strong>PFL (Limitation de Puissance et de Force) :</strong>
 						Moyen de prévention consistant à limiter la vitesse, la force et la puissance
 						d'un robot collaboratif pour éviter toute blessure en cas de contact avec un
 						opérateur.
 					</li>
-					<li>
+					<li id="moyen-prevention">
 						<strong>Moyen de prévention :</strong>
 						Mesure technique permettant de réduire un risque identifié (barrière
 						immatérielle, scrutateur laser, protecteur mobile, limitation de vitesse...).
 					</li>
-					<li>
+					<li id="synthèse-moyens-prevention">
 						<strong>Synthèse des moyens de prévention :</strong>
 						Processus regroupant les solutions de prévention définies pour chaque tâche afin
 						d'obtenir une solution unique et cohérente au niveau de l'ouverture.
 					</li>
-					<li>
+					<li id="distance-sécurité">
 						<strong>Distance de sécurité (S) :</strong>
 						Distance minimale entre un dispositif de détection et la zone dangereuse,
 						calculée à partir du temps d'arrêt du système et de la résolution du capteur.
 					</li>
-					<li>
+					<li id="clamp">
 						<strong>Clamp :</strong>
 						Opération consistant à restreindre une valeur entre un minimum et un maximum, en
 						la ramenant à la borne dépassée si nécessaire.
 					</li>
-					<li>
+					<li id="json">
 						<strong>JSON (JavaScript Object Notation) :</strong>
 						Format léger d'échange de données, utilisé ici pour tout les textes de l'application permettant
 						une modification simple pour les non informaticiens.
 					</li>
-					<li>
+					<li id="store">
 						<strong>Store :</strong>
 						Espace centralisant une partie de l'état de l'application et les fonctions
 						permettant de le modifier, accessible depuis n'importe quel composant.
 					</li>
-					<li>
+					<li id="graphe-dirige-acyclique">
 						<strong>Graphe dirigé acyclique :</strong>
 						Type de graphe dans lequel les noeuds sont reliés par des connexions à sens unique qui ne
 						forment aucun cycle. Dans le contexte de l'application, il est utilisé pour la réduction des
 						risques menant à un ensemble de solutions.
 					</li>
-					<li>
-						<strong>Client :</strong>
-						Personne ou entreprise qui souhaite intégrer un robot collaboratif dans son environnement de
-						travail et qui fait appel à un intégrateur pour concevoir la cellule robotique collaborative.
-					</li>
-					<li>
-						<strong>Intégrateur :</strong>
-						Professionel chargé de concevoir et d'implémenter la cellule robotique collaborative en respectant les normes de sécurité et les besoins du client.
-					</li>
-					<li>
+					<li id="protecteur-mobile">
 						<strong>Protecteur mobile (verrouillage ou interverrouillage) :</strong>
 						Les dispositifs de verrouillage et d'interverrouillage sont associés à des protecteurs mobiles
 						pour empêcher les fonctions dangereuses de la machine tant que ceux-ci ne sont pas fermés. La
@@ -214,27 +211,27 @@
 						déclenche l'arrêt) ; avec un interverrouillage, il reste physiquement bloqué fermé tant que le
 						danger n'a pas disparu.
 					</li>
-					<li>
+					<li id="détection-de-franchissement">
 						<strong>Dispositif de détection de franchissement (Barrière immatérielle, Scrutateur
 							laser, Caméra de sécurité) :</strong>
 						Ensemble des moyens de prévention détectant la présence d'un opérateur dans une zone
 						surveillée, sans barrière physique, et déclenchant l'arrêt de la machine.
 					</li>
-					<li>
+					<li id="ssm">
 						<strong>SSM (Vitesse et distance de séparation contrôlés)</strong>
 						Surveillance sûre de la vitesse et surveillance sûre de la distance de séparation de façon
 						dynamique. Le principe mis en œuvre est la surveillance dynamique de la distance de séparation
 						entre le robot et l’opérateur, il est possible de combiner ce moyen de prévention avec la
 						fonction PFL.
 					</li>
-					<li>
+					<li id="tests-de-régression">
 						<strong>Tests de régression :</strong>
 						Tests automatisés visant à vérifier qu'une modification du code n'a pas introduit
 						d'erreur dans un comportement qui fonctionnait auparavant. Dans le cadre du graphe
 						décisionnel, ils consistent à rejouer des scénarios prédéfinis (matrice de décision au
 						format CSV) et à comparer le résultat obtenu avec le résultat attendu.
 					</li>
-					<li>
+					<li id="hooks">
 						<strong>Hook (React) :</strong>
 						Fonction permettant à un composant d'utiliser certaines fonctionnalités de
 						React (état, effets, références...) sans avoir besoin d'écrire une classe. Un hook
@@ -265,13 +262,13 @@
 						refaire à chaque fois que le composant se met à jour, tant que les données dont il
 						dépend n'ont pas changé.
 					</li>
-					<li>
+					<li id="désérialisation">
 						<strong>Sérialisation / désérialisation :</strong>
 						La sérialisation consiste à convertir les données de l'application (objets,
 						tableaux) en texte (JSON) pour pouvoir les sauvegarder. La désérialisation est
 						l'opération inverse, qui reconstruit les données en mémoire à partir de ce texte.
 					</li>
-					<li>
+					<li id="matrice-de-décision">
 						<strong>Matrice de décision :</strong>
 						Tableau regroupant différents scénarios de test (combinaisons de réponses possibles)
 						associés à leur résultat attendu, utilisé pour valider automatiquement le

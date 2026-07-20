@@ -43,7 +43,7 @@
 				<li><a href="#persistance-donnees">Persistance des données</a></li>
 				<li><a href="#menu-navigation">Menu de navigation</a></li>
 				<li><a href="#visualisation-dynamique">Visualisation dynamique des ouvertures</a></li>
-				<li><a href="#validation-tests">Tests de régression</a></li>
+				<li><a href="#validation-tests"><a href="biblio.html#tests-de-régression">Tests de régression</a></li>
 				<li><a href="#calculateurs-distance">Calculateurs de distance minimale</a></li>
 				<li><a href="#affichage-fleche">Flèche de distance de sécurité</a></li>
 				<li><a href="#generation-rapports-pdf">Génération de rapport PDF</a></li>
@@ -53,6 +53,7 @@
 
 	<main class="container page-grid-with-toc">
 		<section class="card">
+			<br>
 			<h2 id="methode-travail">Méthode de travail</h2>
 			<div class="work-environment-body">
 				<p>
@@ -79,7 +80,8 @@
 				</p>
 				<br><br>
 			</div>
-
+			<div class ="section-heading"></div>
+			<br><br>
 			<div class="work-environment-body">
 				<h2 id="etat-inital">État initial de l'application</h2>
 				<p>
@@ -88,17 +90,18 @@
 					des changements qui allaient se répercuter sur l'ensemble de son raisonnement.
 					L'architecture générale du projet était déjà posée, avec une séparation claire entre
 					les composants (<code>components</code>), les modèles de données (<code>data</code>),
-					les énumérations (<code>enums</code>), les hooks (<code>hooks</code>),
+					les énumérations (<code>enums</code>), les <a href="biblio.html#hooks">hooks</a> (<code>hooks</code>),
 					les fonctions utilitaires (<code>lib</code>), incluant également le
 					fichier <code>text.json</code> centralisant les textes de l'application.
 				</p>
 			</div>
 			<br><br>
+			<div class="section-heading">
+			</div>
 			<span class="tag">Modifications ergonomiques (UX, UI)</span>
 			<br>
-			<div class="section-heading">
-				<h2 id="raccourcis-clavier">Gestion des raccourcis clavier et de l'historique (Undo/Redo)</h2>
-			</div>
+			
+			<h2 id="raccourcis-clavier">Gestion des raccourcis clavier et de l'historique (Undo/Redo)</h2>
 			<br>
 			<div class="work-environment-body">
 				<p>
@@ -155,7 +158,7 @@
 					</p>
 					<br>
 					<p>
-						Chaque interaction sur le canvas (translation,rotation) génère
+						Chaque interaction sur le canvas génère
 						un objet encapsulant une méthode <code>execute()</code> et une méthode <code>undo()</code>,
 						pour garantir la réversibilité des actions.
 					</p>
@@ -190,7 +193,7 @@
 
 			<div class="architecture-grid">
 				<div class="architecture-text">
-					<h3>1. Cycle de vie et désérialisation</h3>
+					<h3>1. Cycle de vie et <a href="biblio.html#désérialisation">désérialisation</a></h3>
 					<br>
 					<p>
 						On utilise à nouveau un hook<code>use-project-backup.ts</code>, qui orchestre la persistance de
@@ -431,7 +434,7 @@
 					L'objectif principal est de s'assurer que les modifications apportées à l'arbre décisionnel
 					n'introduisent pas d'erreurs dans le calcul des solutions de prévention ou dans le parcours
 					séquentiel.
-					Cette validation s'appuie sur le test de notre <strong>graphe dirigé acyclique</strong>, où
+					Cette validation s'appuie sur le test de notre <strong><a href="biblio.html#graphe-dirigé-acyclique">graphe dirigé acyclique</a></strong>, où
 					chaque nœud représente une question et chaque arête représente une transition conditionnelle.
 				</p>
 			</div>
@@ -571,7 +574,7 @@
 
 
 			<div class="work-environment-body">
-				<h3>3. Matrice de décision et automatisation des tests</h3>
+				<h3>3. <a href="biblio.html#matrice-de-décision">Matrice de décision et automatisation des tests</a></h3>
 				<p>
 					Dans le but de valider automatiquement les chemins possibles au sein du graphe sans
 					test manuel, une <strong>matrice de décision</strong> via un tableau CSV a été mise en place.
@@ -909,7 +912,7 @@
 							calculs
 							se simplifient. L'algorithme détermine la position sur chaque segment de façon totalement
 							indépendante
-							(avant d'appliquer un clamp entre 0 et 1).
+							(avant d'appliquer un <a href="biblio.html#clamp">clamp</a> entre 0 et 1).
 						</li>
 						<li>
 							<strong>Parallélisme (D ≈ 0) :</strong> Si les segments sont parallèles, il y a une infinité
