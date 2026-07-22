@@ -68,6 +68,81 @@
 				<a href="#anchor-robot" class="lightbox-close" aria-label="Fermer">&times;</a>
 				<img src="img/robot.png" alt="Robot collaboratif">
 			</div><br>
+			<h2>Les robots collaboratifs travaillent-ils avec l'opérateur ?</h2>
+			<br>
+			<p>
+
+				L'homme et le robot collaboratif travaillent en lien l'un avec l'autre, à des degrés d'interaction
+				différents. On distingue trois types de collaboration possibles :
+			<ul class="work-environment-list"><br>
+				<li><strong>Le partage d'espace de travail</strong></a>,
+					lorsque l'homme et le robot concourent à la réalisation de tâches distinctes dans un même
+					environnement physique.</li>
+				<li><strong>La collaboration directe</strong></a>, lorsque l'homme et le robot
+					travaillent simultanément à la réalisation
+					d'une tâche commune.</li>
+				<li><strong>La collaboration indirecte</strong></a>, lorsque l'homme et le robot
+					travaillent tour à tour à la réalisation
+					d'une tâche commune.</li>
+			</ul>
+			</p>
+			<br><br>
+			<h2>Les robots collaboratifs sont-ils sûrs ?</h2>
+			<br>
+			<p>La mise en oeuvre de robots, quels qu'ils soient, génère un nombre important de risques liés au robot
+				lui-même mais aussi au procédé , à l'outil utilisé et à la pièce manipulée.<br> Parmi ces risques, on
+				distingue les chocs et les écrasements ainsi que les risques électriques, thermiques et liés à
+				l'exposition aux vibrations et aux poussières. <br>Or, si en robotique classique la majorité de ces
+				risques
+				est maîtrisée par des barrières de protection matérialisées, ce n'est pas le cas des robots
+				collaboratifs conçus pour travailler à proximité des opérateurs.</p>
+			<br><br>
+			<div class="section-heading"></div>
+			<span id="scenario1" class="scroll-anchor" aria-hidden="true"></span>
+			<span id="scenario2" class="scroll-anchor" aria-hidden="true"></span>
+			<span id="scenario3" class="scroll-anchor" aria-hidden="true"></span>
+			<br>
+			<h2>Types de collaboration homme-robot : </h2>
+
+			<div class="video-tabs">
+				<input type="radio" name="scenario-tabs" id="tab-scenario1" checked>
+				<input type="radio" name="scenario-tabs" id="tab-scenario2">
+				<input type="radio" name="scenario-tabs" id="tab-scenario3">
+
+				<div class="video-tabs-nav">
+					<label for="tab-scenario1">Partage d'espace de travail</label>
+					<label for="tab-scenario2">Collaboration indirecte</label>
+					<label for="tab-scenario3">Collaboration directe</label>
+				</div>
+				<div class="video-tabs-panels">
+					<div class="video-tab-panel" id="panel-scenario1">
+						<p>Vidéo illustrant un partage d'espace de travail entre le robot et l'opérateur.</p>
+						<br>
+						<video class="result-video" controls preload="metadata">
+							<source src="img/Scenario_1_HD.mp4" type="video/mp4" />
+							Votre navigateur ne supporte pas la lecture vidéo.
+						</video>
+					</div>
+					<div class="video-tab-panel" id="panel-scenario2">
+						<p>Vidéo illustrant une collaboration indirecte entre le robot et l'opérateur.</p>
+						<br>
+						<video class="result-video" controls preload="metadata">
+							<source src="img/Scenario_2_HD.mp4" type="video/mp4" />
+							Votre navigateur ne supporte pas la lecture vidéo.
+						</video>
+					</div>
+					<div class="video-tab-panel" id="panel-scenario3">
+						<br>
+						<p>Vidéo illustrant une collaboration directe entre le robot et l'opérateur.</p>
+						<br>
+						<video class="result-video" controls preload="metadata">
+							<source src="img/Scenario_3_HD.mp4" type="video/mp4" />
+							Votre navigateur ne supporte pas la lecture vidéo.
+						</video>
+					</div>
+				</div>
+			</div>
+			<br><br>
 			<h2>Problématique de l'étude</h2>
 			<br>
 			<em><strong>Comment guider l'intégrateur dans le choix de moyen de prévention ?</strong></em>
@@ -89,6 +164,8 @@
 				doit y être associé.
 			</p><br>
 			<br><br>
+			<div class="section-heading"></div>
+			<br>
 			<h2>État de l'art</h2>
 			<br>
 			<p>
@@ -114,78 +191,12 @@
 				Ces deux outils aident au calcul des vitesses maximales de déplacement des
 				robots, en tenant compte de la charge utile et des parties du corps
 				potentiellement exposées à un choc. Leur apport reste toutefois limité : ils se
-				concentrent uniquement sur la mise en œuvre de la fonction <strong><a href="biblio.html#pfl">PFL</a></strong>, sans proposer
+				concentrent uniquement sur la mise en œuvre de la fonction <strong><a
+						href="biblio.html#pfl">PFL</a></strong>, sans proposer
 				d'approche méthodique globale couvrant l'ensemble du processus d'intégration.
 				C'est précisément le manque auquel l'étude <strong>ISARC</strong>, et l'application développée
 				durant ce stage, cherchent à répondre.
 			</p><br><br>
-			<h2>Les robots collaboratifs sont-ils sûrs ?</h2>
-			<br>
-			<p>La mise en oeuvre de robots, quels qu'ils soient, génère un nombre important de risques liés au robot
-				lui-même mais aussi au procédé , à l'outil utilisé et à la pièce manipulée.<br> Parmi ces risques, on
-				distingue les chocs et les écrasements ainsi que les risques électriques, thermiques et liés à
-				l'exposition aux vibrations et aux poussières. <br>Or, si en robotique classique la majorité de ces
-				risques
-				est maîtrisée par des barrières de protection matérialisées, ce n'est pas le cas des robots
-				collaboratifs conçus pour travailler à proximité des opérateurs.</p>
-			<br><br>
-			<h2>Les robots collaboratifs travaillent-ils avec l'opérateur ?</h2>
-			<br>
-			<p>
-
-				L'homme et le robot collaboratif travaillent en lien l'un avec l'autre, à des degrés d'interaction
-				différents. On distingue trois types de collaboration possibles :
-			<ul class="work-environment-list"><br>
-				<li><strong>Le partage d'espace de travail</strong></a>,
-					lorsque l'homme et le robot concourent à la réalisation de tâches distinctes dans un même
-					environnement physique.</li>
-				<li><strong>La collaboration directe</strong></a>, lorsque l'homme et le robot
-					travaillent simultanément à la réalisation
-					d'une tâche commune.</li>
-				<li><strong>La collaboration indirecte</strong></a>, lorsque l'homme et le robot
-					travaillent tour à tour à la réalisation
-					d'une tâche commune.</li>
-			</ul>
-			</p>
-			<br><br>
-			<div class="section-heading"></div>
-			<span id="scenario1" class="scroll-anchor" aria-hidden="true"></span>
-			<br>
-			<h2>Partage d'espace de travail</h2>
-			<div class="result-video-body">
-				<p>Vidéo illustrant un partage d'espace de travail entre le robot et l'opérateur.</p>
-				<video class="result-video" controls preload="metadata">
-					<source src="img/Scenario_1_HD.mp4" type="video/mp4" />
-					Votre navigateur ne supporte pas la lecture vidéo.
-				</video>
-			</div>
-
-
-			<br><br>
-			<span id="scenario2" class="scroll-anchor" aria-hidden="true"></span>
-			<h2>Collaboration indirecte</h2>
-			<div class="result-video-body">
-				<p>Vidéo illustrant une collaboration indirecte entre le robot et l'opérateur.</p>
-				<video class="result-video" controls preload="metadata">
-					<source src="img/Scenario_2_HD.mp4" type="video/mp4" />
-					Votre navigateur ne supporte pas la lecture vidéo.
-				</video>
-			</div>
-
-
-			<br><br>
-			<span id="scenario3" class="scroll-anchor" aria-hidden="true"></span>
-			<h2>Collaboration directe</h2>
-			<div class="result-video-body">
-				<p>Vidéo illustrant une collaboration directe entre le robot et l'opérateur.</p>
-				<video class="result-video" controls preload="metadata">
-					<source src="img/Scenario_3_HD.mp4" type="video/mp4" />
-					Votre navigateur ne supporte pas la lecture vidéo.
-				</video>
-			</div>
-			<br><br>
-			<div class="section-heading"></div>
-			<br>
 			<p>
 				Ces différents scénarios illustrent la diversité des interactions possibles entre
 				l'opérateur et le robot collaboratif, et donc les risques à anticiper

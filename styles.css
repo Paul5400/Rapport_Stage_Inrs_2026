@@ -939,3 +939,52 @@ code {
 	border: none;
 	display: block;
 }
+.video-tabs {
+	margin: 20px 0;
+}
+
+.video-tabs input[type="radio"] {
+	display: none;
+}
+
+.video-tabs-nav {
+	display: flex;
+	gap: 8px;
+	flex-wrap: wrap;
+	margin-bottom: 16px;
+}
+
+.video-tabs-nav label {
+	cursor: pointer;
+	padding: 10px 18px;
+	border-radius: 999px;
+	background: #f1f5f9;
+	color: #475569;
+	font-weight: 600;
+	font-size: 0.9rem;
+	border: 1px solid #e2e8f0;
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.video-tabs-nav label:hover {
+	background: #e2e8f0;
+}
+
+.video-tab-panel {
+	display: none;
+}
+
+#tab-scenario1:checked ~ .video-tabs-panels #panel-scenario1,
+#tab-scenario2:checked ~ .video-tabs-panels #panel-scenario2,
+#tab-scenario3:checked ~ .video-tabs-panels #panel-scenario3 {
+	display: block;
+}
+
+
+#tab-scenario1:checked ~ .video-tabs-nav label[for="tab-scenario1"],
+#tab-scenario2:checked ~ .video-tabs-nav label[for="tab-scenario2"],
+#tab-scenario3:checked ~ .video-tabs-nav label[for="tab-scenario3"] {
+	background: #e85d17;
+	color: #fff;
+	border-color: #e85d17;
+}
