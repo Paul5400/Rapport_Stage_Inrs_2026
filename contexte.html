@@ -25,7 +25,7 @@
 				<a href="entreprise.html">Entreprise</a>
 				<a href="contexte.html">Contexte</a>
 				<a href="but.html">But de l'application</a>
-				<a href="objectifs.html">Objectifs</a>
+				<a href="objectifs.html">Objectifs du stage</a>
 				<a href="application.html">Application robotique</a>
 				<a href="travaux.html">Travaux</a>
 				<a href="resultats.html">Résultats</a>
@@ -38,45 +38,19 @@
 	<main class="container page-grid">
 		<section class="card">
 			<h2>L'étude ISARC</h2>
-			<em><strong>Comment guider l'intégrateur dans le choix de moyen de prévention ?</strong></em>
 			<p><br>Dans le cadre de ses travaux sur la prévention des <a href="biblio.html#risque">risques</a> liés à la
 				robotique, le laboratoire
 				<strong>SETA</strong> de
 				l’INRS mène une étude intitulée <strong>ISARC (Intégration Sûre d’Application Robotique
-					Collaborative).</strong> Cette
-				étude vise à mieux accompagner les entreprises qui souhaitent intégrer des robots collaboratifs dans
-				leur environnement de travail. Contrairement aux robots industriels classiques encagés, ces robots
+					Collaborative).</strong><br> Cette
+				étude vise à mieux accompagner les entreprises qui souhaitent intégrer des <strong>robots
+					collaboratifs</strong> dans
+				leur environnement de travail.<br> Contrairement aux robots industriels classiques encagés, ces robots
 				partagent un espace avec les opérateurs humains. Leur intégration doit donc se faire dans des conditions
 				strictes pour garantir la sécurité des travailleurs.
 			</p><br>
-			<p>L’approche classique des intégrateurs consiste généralement à considérer un robot et ses équipements sans
-				aucune protection. Suite à l’analyse des risques, des protections (comme des barrières ou capteurs) sont
-				ajoutées dans les situations identifiées comme dangereuses. L’étude <strong>ISARC</strong> propose une
-				démarche inverse :
-				partir d’un périmètre entièrement protégé autour de l’application robotique, par des protecteurs fixes
-				(ex: grillages). On crée ensuite des ouvertures spécifiques uniquement là où des <a
-					href="biblio.html#tâche">tâches</a> nécessitent
-				l’accès d’un opérateur humain dans l’espace de travail du robot (ex: collaboration avec le robot).
-				Chaque ouverture doit alors faire l’objet d’une analyse rigoureuse, pour s’assurer qu’elle ne génère pas
-				de risques non maîtrisés. Pour chaque ouverture générant des risques, au moins un <a
-					href="biblio.html#moyen-prevention">moyen de prévention</a>
-				doit y être associé.</p><br>
-			<p>Pour structurer cette démarche, les chercheurs de l’<strong>INRS</strong> ont conçu une méthode sous la
-				forme d’un arbre
-				de décision. Cet outil permet d’évaluer, étape par étape, les tâches réalisées dans la cellule, les
-				interactions homme-robot, et les mesures de prévention à appliquer. L’arbre s’appuie sur les normes de
-				sécurité en vigueur, notamment la norme <strong><a
-						href="https://www.boutique.afnor.org/fr-fr/norme/nf-en-iso-12100/securite-des-machines-principes-generaux-de-conception-appreciation-du-risq/fa161471/36742"
-						target="_blank">NF EN ISO 12100</a></strong> pour l’évaluation des risques machine, et
-				<strong><a
-						href="https://www.boutique.afnor.org/fr-fr/norme/nf-en-iso-102182/robots-et-dispositifs-robotiques-exigences-de-securite-pour-les-robots-indu/fa140283/1172"
-						target="_blank">NF EN ISO 10218-2</a></strong> pour
-				les exigences spécifiques aux applications robotiques collaboratives. Il permet
-				également de guider le choix entre différentes solutions techniques.
-			</p>
-			<br>
 			<h2>Qu'est-ce qu'un robot collaboratif ?</h2>
-			<p>Un robot collaboratif est un bras articulé énergisé, plus ou moins autonome, conçu pour travailler à
+			<p><br>Un robot collaboratif est un bras articulé énergisé, plus ou moins autonome, conçu pour travailler à
 				proximité des opérateurs ou en relation directe avec eux. <br>Cette co-activité implique la suppression
 				totale ou partielle des barrières physiques entre l'homme et le robot afin qu'ils puissent intéragir.
 			</p>
@@ -93,8 +67,58 @@
 			<div class="lightbox-overlay" id="img-robot">
 				<a href="#anchor-robot" class="lightbox-close" aria-label="Fermer">&times;</a>
 				<img src="img/robot.png" alt="Robot collaboratif">
-			</div>
+			</div><br>
+			<h2>Problématique de l'étude</h2>
 			<br>
+			<em><strong>Comment guider l'intégrateur dans le choix de moyen de prévention ?</strong></em>
+			<p><br>L’approche classique des intégrateurs consiste généralement à considérer un robot et ses équipements
+				sans
+				aucune protection.<br> Suite à l’analyse des risques, des protections (comme des barrières ou capteurs)
+				sont
+				ajoutées dans les situations identifiées comme dangereuses.<br> L’étude <strong>ISARC</strong> propose
+				une
+				démarche inverse :
+				partir d’un périmètre entièrement protégé autour de l’application robotique, par des protecteurs fixes
+				(ex: grillages).<br> On crée ensuite des ouvertures spécifiques uniquement là où des <a
+					href="biblio.html#tâche">tâches</a> nécessitent
+				l’accès d’un opérateur humain dans l’espace de travail du robot (ex: collaboration avec le robot).
+				<br>Chaque ouverture doit alors faire l’objet d’une analyse rigoureuse, pour s’assurer qu’elle ne génère
+				pas
+				de risques non maîtrisés. Pour chaque ouverture générant des risques, au moins un <a
+					href="biblio.html#moyen-prevention">moyen de prévention</a>
+				doit y être associé.
+			</p><br>
+			<br><br>
+			<h2>État de l'art</h2>
+			<br>
+			<p>
+				L'état de l'art réalisé dans ce cadre a également montré qu'il n'existe
+				actuellement que peu d'outils d'aide à la conception d'applications de robotique
+				collaborative. On peut notamment citer :
+			</p><br>
+			<ul class="work-environment-list">
+				<li>
+					<strong><a href="https://cobotplaner.de/preambel" target="_blank"
+							rel="noopener noreferrer">Cobot-planer</a></strong>, une application
+					éditée par le BGHM (l'organisme d'assurance sociale allemande des accidents
+					du travail des secteurs du bois et du métal).
+				</li>
+				<li>
+					<strong>HRC guide</strong>, une application mobile proposée par KUKA,
+					utilisable uniquement pour des applications mettant en œuvre des robots de
+					cette marque.
+				</li>
+			</ul>
+			<br>
+			<p>
+				Ces deux outils aident au calcul des vitesses maximales de déplacement des
+				robots, en tenant compte de la charge utile et des parties du corps
+				potentiellement exposées à un choc. Leur apport reste toutefois limité : ils se
+				concentrent uniquement sur la mise en œuvre de la fonction <strong><a href="biblio.html#pfl">PFL</a></strong>, sans proposer
+				d'approche méthodique globale couvrant l'ensemble du processus d'intégration.
+				C'est précisément le manque auquel l'étude <strong>ISARC</strong>, et l'application développée
+				durant ce stage, cherchent à répondre.
+			</p><br><br>
 			<h2>Les robots collaboratifs sont-ils sûrs ?</h2>
 			<br>
 			<p>La mise en oeuvre de robots, quels qu'ils soient, génère un nombre important de risques liés au robot
@@ -104,31 +128,30 @@
 				risques
 				est maîtrisée par des barrières de protection matérialisées, ce n'est pas le cas des robots
 				collaboratifs conçus pour travailler à proximité des opérateurs.</p>
-			<br>
+			<br><br>
 			<h2>Les robots collaboratifs travaillent-ils avec l'opérateur ?</h2>
 			<br>
 			<p>
 
 				L'homme et le robot collaboratif travaillent en lien l'un avec l'autre, à des degrés d'interaction
 				différents. On distingue trois types de collaboration possibles :
-			<ul class="work-environment-list">
-				<li><a href="resultats.html#scenario1">Le partage d'espace de travail</a>,
+			<ul class="work-environment-list"><br>
+				<li><strong>Le partage d'espace de travail</strong></a>,
 					lorsque l'homme et le robot concourent à la réalisation de tâches distinctes dans un même
 					environnement physique.</li>
-				<li><a href="resultats.html#scenario3">La collaboration directe</a>, lorsque l'homme et le robot
+				<li><strong>La collaboration directe</strong></a>, lorsque l'homme et le robot
 					travaillent simultanément à la réalisation
 					d'une tâche commune.</li>
-				<li><a href="resultats.html#scenario2">La collaboration indirecte</a>, lorsque l'homme et le robot
+				<li><strong>La collaboration indirecte</strong></a>, lorsque l'homme et le robot
 					travaillent tour à tour à la réalisation
 					d'une tâche commune.</li>
 			</ul>
 			</p>
 			<br><br>
+			<div class="section-heading"></div>
 			<span id="scenario1" class="scroll-anchor" aria-hidden="true"></span>
-			<div class="section-heading">
-				<span class="tag">Scénario 1</span>
-				<h2>Partage d'espace de travail</h2>
-			</div>
+			<br>
+			<h2>Partage d'espace de travail</h2>
 			<div class="result-video-body">
 				<p>Vidéo illustrant un partage d'espace de travail entre le robot et l'opérateur.</p>
 				<video class="result-video" controls preload="metadata">
@@ -140,10 +163,7 @@
 
 			<br><br>
 			<span id="scenario2" class="scroll-anchor" aria-hidden="true"></span>
-			<div class="section-heading">
-				<span class="tag">Scénario 2</span>
-				<h2>Collaboration indirecte</h2>
-			</div>
+			<h2>Collaboration indirecte</h2>
 			<div class="result-video-body">
 				<p>Vidéo illustrant une collaboration indirecte entre le robot et l'opérateur.</p>
 				<video class="result-video" controls preload="metadata">
@@ -155,10 +175,7 @@
 
 			<br><br>
 			<span id="scenario3" class="scroll-anchor" aria-hidden="true"></span>
-			<div class="section-heading">
-				<span class="tag">Scénario 3</span>
-				<h2>Collaboration directe</h2>
-			</div>
+			<h2>Collaboration directe</h2>
 			<div class="result-video-body">
 				<p>Vidéo illustrant une collaboration directe entre le robot et l'opérateur.</p>
 				<video class="result-video" controls preload="metadata">
@@ -166,7 +183,17 @@
 					Votre navigateur ne supporte pas la lecture vidéo.
 				</video>
 			</div>
-
+			<br><br>
+			<div class="section-heading"></div>
+			<br>
+			<p>
+				Ces différents scénarios illustrent la diversité des interactions possibles entre
+				l'opérateur et le robot collaboratif, et donc les risques à anticiper
+				selon la configuration retenue. <br>C'est précisément pour guider l'intégrateur à travers
+				cette analyse que l'application développée durant ce stage a été conçue : son
+				fonctionnement et ses objectifs sont détaillés dans la section suivante.
+			</p>
+			<br>
 		</section>
 	</main>
 

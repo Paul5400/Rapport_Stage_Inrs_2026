@@ -24,7 +24,7 @@
 				<a href="entreprise.html">Entreprise</a>
 				<a href="contexte.html">Contexte</a>
 				<a href="but.html">But de l'application</a>
-				<a href="objectifs.html">Objectifs</a>
+				<a href="objectifs.html">Objectifs du stage</a>
 				<a href="application.html">Application robotique</a>
 				<a href="travaux.html">Travaux</a>
 				<a href="resultats.html">Résultats</a>
@@ -80,27 +80,11 @@
 				</p>
 				<br><br>
 			</div>
-			<div class ="section-heading"></div>
-			<br><br>
-			<div class="work-environment-body">
-				<h2 id="etat-inital">État initial de l'application</h2>
-				<p>
-					À mon arrivée, l'application était déjà fonctionnelle. Elle permettait notamment de
-					créer des cellules via Konva, le système de graphe était en place, mais voué à
-					des changements qui allaient se répercuter sur l'ensemble de son raisonnement.
-					L'architecture générale du projet était déjà posée, avec une séparation claire entre
-					les composants (<code>components</code>), les modèles de données (<code>data</code>),
-					les énumérations (<code>enums</code>), les <a href="biblio.html#hooks">hooks</a> (<code>hooks</code>),
-					les fonctions utilitaires (<code>lib</code>), incluant également le
-					fichier <code>text.json</code> centralisant les textes de l'application.
-				</p>
-			</div>
-			<br><br>
 			<div class="section-heading">
 			</div>
 			<span class="tag">Modifications ergonomiques (UX, UI)</span>
 			<br>
-			
+
 			<h2 id="raccourcis-clavier">Gestion des raccourcis clavier et de l'historique (Undo/Redo)</h2>
 			<br>
 			<div class="work-environment-body">
@@ -434,7 +418,8 @@
 					L'objectif principal est de s'assurer que les modifications apportées à l'arbre décisionnel
 					n'introduisent pas d'erreurs dans le calcul des solutions de prévention ou dans le parcours
 					séquentiel.
-					Cette validation s'appuie sur le test de notre <strong><a href="biblio.html#graphe-dirigé-acyclique">graphe dirigé acyclique</a></strong>, où
+					Cette validation s'appuie sur le test de notre <strong><a
+							href="biblio.html#graphe-dirige-acyclique">graphe dirigé acyclique</a></strong>, où
 					chaque nœud représente une question et chaque arête représente une transition conditionnelle.
 				</p>
 			</div>
@@ -521,7 +506,8 @@
 				<h3>2. Implémentation du graphe</h3>
 				<p>
 					Pour transposer ces logigrammes en code, la logique n'a pas été écrite
-					sous forme de conditions imbriquées. À la place, un système de <strong>graphe dirigé acyclique</strong> a été développé.
+					sous forme de conditions imbriquées. À la place, un système de <strong>graphe dirigé
+						acyclique</strong> a été développé.
 				</p>
 				<ul class="work-environment-list">
 					<li>
@@ -574,10 +560,11 @@
 
 
 			<div class="work-environment-body">
-				<h3>3. <a href="biblio.html#matrice-de-décision">Matrice de décision et automatisation des tests</a></h3>
+				<h3>3.Matrice de décision et automatisation des tests</h3>
 				<p>
 					Dans le but de valider automatiquement les chemins possibles au sein du graphe sans
-					test manuel, une <strong>matrice de décision</strong> via un tableau CSV a été mise en place.
+					test manuel, une <strong><a href="biblio.html#matrice-de-décision">matrice de décision</a></strong>
+					via un tableau CSV a été mise en place.
 
 				</p>
 				<ul class="work-environment-list">
@@ -1149,6 +1136,22 @@
 					<img src="img/pdf_container.png" alt="Composant BlockContainerPdf source"
 						style="max-width: 95%; max-height: 90vh; border-radius: 8px;">
 				</div>
+			</div>
+			<div class="work-environment-body" style="margin-top: 30px;">
+				<h3>3. Exemple de rapport généré</h3>
+				<p>
+					Vous pouvez consulter ci-dessous un exemple de rapport PDF généré par
+					l'application.
+				</p>
+				<br>
+				<div class="pdf-embed-wrapper">
+					<iframe src="img/Test1_04-06-2026.pdf" title="Exemple de rapport PDF généré par ISARC"
+						class="pdf-embed">
+					</iframe>
+				</div>
+				<figcaption style="font-size: 0.85em; color: #666; margin-top: 6px; text-align: center;">
+					Figure 26 : Exemple de rapport PDF généré 
+				</figcaption>
 			</div>
 
 		</section>
