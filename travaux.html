@@ -115,6 +115,7 @@
 							(Zustand).</li>
 						<li><strong>Rétablir l'action annulée (Ctrl + Y ou Ctrl + Shift + Z) :</strong> Avance à
 							nouveau dans l'historique des modifications.</li>
+						<li><strong>Supprimer l'élément sélectionné (Suppr) :</strong> Retire l'élément actuellement sélectionné du canvas.</li>
 					</ul>
 
 					<figure class="code-screenshot">
@@ -131,6 +132,7 @@
 						<img src="img/ctrl_code.png" alt="Extrait de code du hook useKeyboardShortcuts">
 					</div>
 				</div>
+				<br><br>
 				<div class="architecture-diagram">
 					<h3>2. Architecture logicielle : Le Pattern Command</h3>
 					<br>
@@ -141,7 +143,7 @@
 					</p>
 					<br>
 					<p>
-						Chaque interaction sur le canvas génère
+						Chaque interaction sur le canvas (translation, rotation et suppression) génère
 						un objet encapsulant une méthode <code>execute()</code> et une méthode <code>undo()</code>,
 						pour garantir la réversibilité des actions.
 					</p>
@@ -176,7 +178,7 @@
 
 			<div class="architecture-grid">
 				<div class="architecture-text">
-					<h3>1. Cycle de vie et <a href="biblio.html#désérialisation">désérialisation</a></h3>
+					<h3>1. Cycle de vie et désérialisation</h3>
 					<br>
 					<p>
 						On utilise à nouveau un hook<code>use-project-backup.ts</code>, qui orchestre la persistance de
@@ -187,7 +189,7 @@
 						<li><strong>Modélisation (<code>ProjectBackupData</code>) :</strong> Centralisation du
 							nom du projet, de l'état d'initialisation, de la phase active, ainsi que de l'ensemble des
 							objets géométriques et des tâches assignées.</li>
-						<li><strong>Lecture et désérialisation :</strong> Récupération de la chaîne brute JSON stockée
+						<li><strong>Lecture et <a href="biblio.html#désérialisation">désérialisation</a> :</strong> Récupération de la chaîne brute JSON stockée
 							sous la clé <code>isaarc_project_backup</code> pour la reconstruire dynamiquement en mémoire
 							lors de l'initialisation.</li>
 						<li><strong>Normalisation (<code>normalizeVisualObjects</code>) :</strong>
@@ -211,7 +213,7 @@
 						<img src="img/sessionstorage.png" alt="Extrait de code de use-project-backup.ts">
 					</div>
 				</div>
-
+				<br><br>
 				<div class="architecture-diagram">
 					<h3>2. Flux d'état : Sauvegarde automatique</h3>
 					<br>
